@@ -1,0 +1,27 @@
+.flex_container_h {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: center;
+}
+
+.flex_container_v {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex_item {
+    padding: 0px;
+    justify-content: center;
+}
+
+img {
+    border-radius: 50%;
+    width: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ck-editor__editable {
+    max-height: 400px;
+}
