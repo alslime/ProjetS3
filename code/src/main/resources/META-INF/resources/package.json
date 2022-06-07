@@ -35,13 +35,9 @@
     "webpack-dev-server": "^4.4.0"
   },
   "dependencies": {
-    "webix-jet": "^2.1.3",
-    "@mdi/font": "^6.5.95",
-    "webix": "^9.2.1",
-    "@ckeditor/ckeditor5-autosave": "^34.0.0",
-    "moment": "^2.29.1",
-    "navigo": "^8.11.1",
-    "papaparse": "^5.3.1",
-    "swagger-client": "^3.18.4"
+    "@mdi/font": "^6.7.96",
+    "moment": "^2.29.3",
+    "webix": "^9.3.0",
+    "webix-jet": "^2.1.3"
   }
 }
