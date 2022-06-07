@@ -1,6 +1,8 @@
 package ca.usherbrooke.fgen.api.service;
 
+import ca.usherbrooke.fgen.api.business.Equipe;
 import ca.usherbrooke.fgen.api.business.Message;
+import ca.usherbrooke.fgen.api.persistence.EquipeMapper;
 import ca.usherbrooke.fgen.api.persistence.MessageMapper;
 import org.jsoup.parser.Parser;
 
@@ -18,23 +20,23 @@ public class EquipeService {
 
 
 	@Inject
-	MessageMapper messageMapper;
+	EquipeMapper equipeMapper;
 
 
-	@Path("getallmessages")
-	public List<Message> getAllMessages(
+	@Path("getallequipes")
+	public List<Equipe> getAllEquipes(
 	) {
-		List<Message> messages = messageMapper.allMessages();
-		return this.unescapeEntities(messages);
+		List<Equipe> equipes = equipeMapper.allEquipes();
+		return this.unescapeEntities(equipes);
 	}
 
-	public static Message unescapeEntities(Message message) {
-		message.description = Parser.unescapeEntities(message.description, true);
-		return message;
+	public static Equipe unescapeEntities(Equipe equipe) {
+		equipe.description = Parser.unescapeEntities(equipe.description, true);
+		return equipe;
 	}
 
-	public List<Message> unescapeEntities(List<Message> messages) {
-		return messages
+	public List<Equipe> unescapeEntities(List<Equipe> equipes) {
+		return equipes
 				.stream()
 				.map(EquipeService::unescapeEntities)
 				.collect(Collectors.toList());
