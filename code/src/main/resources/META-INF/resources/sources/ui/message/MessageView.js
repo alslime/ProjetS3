@@ -16,7 +16,6 @@ export default class MessageView extends JetView {
             type: {
                 height: "auto"
             },
-            // polling interval is 1 second
             datathrottle: 5000,
             template: (obj) => this.template(obj),
             datafetch: 5, // 5 records
@@ -33,7 +32,6 @@ export default class MessageView extends JetView {
 
         return {
             rows: [
-                header,
                 list,
                 pager
 

@@ -19,6 +19,7 @@ module.exports = function(env) {
 		entry: {
 			myapp: "./sources/myapp.js"
 		},
+		watch: true,
 		output: {
 			path: path.join(__dirname, "codebase"),
 			publicPath:"/codebase/",
