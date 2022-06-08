@@ -16,6 +16,20 @@ CREATE TABLE schema_groupe.usagers
 );
 
 
+CREATE TABLE schema_groupe.unit
+(
+    serial_unit_id SERIAL PRIMARY KEY,
+    department_id TEXT NOT NULL,
+    trimester_id TEXT NOT NULL,
+    unit_id TEXT NOT NULL,
+    profile_id TEXT NOT NULL,
+    FOREIGN KEY (department_id) REFERENCES extern_equipe.teachers(department_id),
+    FOREIGN KEY (trimester_id) REFERENCES extern_equipe.teachers(trimester_id),
+    FOREIGN KEY (unit_id) REFERENCES extern_equipe.teachers(unit_id),
+    FOREIGN KEY (profile_id) REFERENCES extern_equipe.teachers(profile_id),
+    CONSTRAINT pk_validation PRIMARY KEY (department_id,trimester_id,unit_id, profile_id)
+);
+
 CREATE TABLE schema_groupe.validation
 (
     cipValideur varchar(8) NOT NULL,
