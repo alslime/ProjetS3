@@ -7,6 +7,8 @@ CREATE TABLE schema_groupe.roles
     nom TEXT NOT NULL
     CONSTRAINT u_roles UNIQUE (nom)
 );
+INSERT INTO schema_groupe.roles (nom) VALUES ('student');
+INSERT INTO schema_groupe.roles (nom) VALUES ('teacher');
 
 CREATE TABLE schema_groupe.usagers
 (
@@ -15,6 +17,9 @@ CREATE TABLE schema_groupe.usagers
     role_id INT NOT NULL,
         FOREIGN KEY (role_id) REFERENCES schema_groupe.roles(role_id)
 );
+INSERT INTO schema_groupe.usagers (cip, prenon_nom)
+SELECT cip, prenon_nom FROM  extern_equipe.etudiants_equipe_unite;
+INSERT INTO schema_groupe.usagers (role_id) SELECT role_id FROM schema_groupe.roles;
 
 CREATE TABLE schema_groupe.unit
 (
@@ -24,6 +29,9 @@ CREATE TABLE schema_groupe.unit
     unit_id TEXT NOT NULL,
     CONSTRAINT u_unit UNIQUE (department_id,trimester_id,unit_id)
 );
+INSERT INTO schema_groupe.unit (department_id, trimester_id, unit_id)
+SELECT department_id, trimester_id, unit_id
+FROM  extern_equipe.etudiants_equipe_unite;
 
 CREATE TABLE schema_groupe.equipe
 (
