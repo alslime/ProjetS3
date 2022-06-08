@@ -1,9 +1,7 @@
 package ca.usherbrooke.fgen.api.service;
 
 import ca.usherbrooke.fgen.api.business.Equipe;
-import ca.usherbrooke.fgen.api.business.Message;
 import ca.usherbrooke.fgen.api.persistence.EquipeMapper;
-import ca.usherbrooke.fgen.api.persistence.MessageMapper;
 import org.jsoup.parser.Parser;
 
 import javax.inject.Inject;
