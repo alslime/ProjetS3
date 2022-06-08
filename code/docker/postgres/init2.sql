@@ -7,6 +7,8 @@ CREATE TABLE schema_groupe.roles
     nom TEXT NOT NULL
 );
 
+INSERT INTO schema_groupe.roles (nom) VALUES ('teacher', 'student');
+
 CREATE TABLE schema_groupe.usagers
 (
     cip VARCHAR(8) NOT NULL,
@@ -14,7 +16,9 @@ CREATE TABLE schema_groupe.usagers
     role_id INT NOT NULL,
     CONSTRAINT pk_usagers PRIMARY KEY cip
 );
-
+INSERT INTO schema_groupe.usagers (cip, prenon_nom)
+SELECT cip, prenon_nom FROM  extern_equipe.etudiants_equipe_unite;
+INSERT INTO schema_groupe.usagers (role_id) SELECT role_id FROM schema_groupe.roles;
 
 CREATE TABLE schema_groupe.unit
 (
@@ -22,13 +26,11 @@ CREATE TABLE schema_groupe.unit
     department_id TEXT NOT NULL,
     trimester_id TEXT NOT NULL,
     unit_id TEXT NOT NULL,
-    profile_id TEXT NOT NULL,
-    FOREIGN KEY (department_id) REFERENCES extern_equipe.teachers(department_id),
-    FOREIGN KEY (trimester_id) REFERENCES extern_equipe.teachers(trimester_id),
-    FOREIGN KEY (unit_id) REFERENCES extern_equipe.teachers(unit_id),
-    FOREIGN KEY (profile_id) REFERENCES extern_equipe.teachers(profile_id),
     CONSTRAINT pk_validation PRIMARY KEY (department_id,trimester_id,unit_id, profile_id)
 );
+INSERT INTO schema_groupe.unit (department_id, trimester_id, unit_id)
+SELECT department_id, trimester_id, unit_id
+FROM  extern_equipe.etudiants_equipe_unite;
 
 CREATE TABLE schema_groupe.validation
 (
