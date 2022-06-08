@@ -5,16 +5,16 @@ CREATE TABLE schema_groupe.roles
 (
     role_id SERIAL PRIMARY KEY,
     nom TEXT NOT NULL
+    CONSTRAINT u_roles UNIQUE (nom)
 );
 
 CREATE TABLE schema_groupe.usagers
 (
-    cip VARCHAR(8) NOT NULL,
+    cip VARCHAR(8) NOT NULL PRIMARY KEY ,
     prenon_nom TEXT NOT NULL,
     role_id INT NOT NULL,
-    CONSTRAINT pk_usagers PRIMARY KEY cip
+        FOREIGN KEY (role_id) REFERENCES schema_groupe.roles(role_id)
 );
-
 
 CREATE TABLE schema_groupe.unit
 (
@@ -22,41 +22,41 @@ CREATE TABLE schema_groupe.unit
     department_id TEXT NOT NULL,
     trimester_id TEXT NOT NULL,
     unit_id TEXT NOT NULL,
-    profile_id TEXT NOT NULL,
-    FOREIGN KEY (department_id) REFERENCES extern_equipe.teachers(department_id),
-    FOREIGN KEY (trimester_id) REFERENCES extern_equipe.teachers(trimester_id),
-    FOREIGN KEY (unit_id) REFERENCES extern_equipe.teachers(unit_id),
-    FOREIGN KEY (profile_id) REFERENCES extern_equipe.teachers(profile_id),
-    CONSTRAINT pk_validation PRIMARY KEY (department_id,trimester_id,unit_id, profile_id)
+    CONSTRAINT u_unit UNIQUE (department_id,trimester_id,unit_id)
+);
+
+CREATE TABLE schema_groupe.equipe
+(
+    equipe_id SERIAL PRIMARY KEY,
+    trimester_id TEXT NOT NULL,
+    department_id TEXT NOT NULL,
+    unit_id TEXT NOT NULL,
+    grouping INT NOT NULL,
+    no INT NOT NULL,
+    nom TEXT,
+    inscriptor TEXT
+    CONSTRAINT u_equipe UNIQUE (department_id,trimester_id,unit_id)
 );
 
 CREATE TABLE schema_groupe.validation
 (
+    serial_unit_id INT NOT NULL,
+        FOREIGN KEY (serial_unit_id) REFERENCES schema_groupe.unit(serial_unit_id),
     cipValideur varchar(8) NOT NULL,
-    department_id TEXT NOT NULL,
-    trimester_id TEXT NOT NULL,
-    unit_id TEXT NOT NULL,
+        FOREIGN KEY (cipValideur) REFERENCES schema_groupe.usagers(cip),
     local TEXT,
     dureePlageHoraire INTERVAL NOT NULL,
-    --FOREIGN KEY (cipValideur) REFERENCES extern_equipe.teachers(cip),
-    --FOREIGN KEY (department_id) REFERENCES extern_equipe.teachers(department_id),
-    --FOREIGN KEY (trimester_id) REFERENCES extern_equipe.teachers(trimester_id),
-    --FOREIGN KEY (unit_id) REFERENCES extern_equipe.teachers(unit_id),
-    CONSTRAINT pk_validation PRIMARY KEY (cipValideur,department_id,trimester_id,unit_id)
+    CONSTRAINT pk_validation PRIMARY KEY (serial_unit_id,cipValideur)
 );
 
 CREATE TABLE schema_groupe.horaireEquipe
 (
-    department_id TEXT NOT NULL,
-    trimester_id TEXT NOT NULL,
-    unit_id TEXT NOT NULL,
-    grouping INT NOT NULL,
-    no INT NOT NULL,
-    --FOREIGN KEY (grouping) REFERENCES extern_equipe.etudiants_equipe_unite(grouping),
-    --FOREIGN KEY (no) REFERENCES extern_equipe.etudiants_equipe_unite(no),
+    serial_unit_id INT NOT NULL,
     cipValideur varchar(8) NOT NULL,
-    FOREIGN KEY (cipValideur,department_id,trimester_id,unit_id) REFERENCES schema_groupe.validation(cipValideur,department_id,trimester_id,unit_id),
-    CONSTRAINT pk_horaireEquipe PRIMARY KEY (cipValideur,department_id,trimester_id,unit_id,grouping,no),
+        FOREIGN KEY (serial_unit_id,cipValideur) REFERENCES schema_groupe.validation(serial_unit_id,cipValideur),
+    equipe_id INT NOT NULL
+        FOREIGN KEY (equipe_id) REFERENCES schema_groupe.equipe(equipe_id),
+    CONSTRAINT pk_horaireEquipe PRIMARY KEY (serial_unit_id,cipValideur,equipe_id),
     HPassagePrevue TIME NOT NULL,
     HPassageReelle TIME NOT NULL
 );
