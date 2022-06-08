@@ -1,4 +1,5 @@
 --Create tables
+
 CREATE SCHEMA schema_groupe;
 
 CREATE TABLE schema_groupe.roles
