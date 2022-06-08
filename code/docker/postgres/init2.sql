@@ -55,7 +55,12 @@ CREATE TABLE schema_groupe.equipe_etudiants
     cipEtudiant VARCHAR(8) NOT NULL,
     CONSTRAINT pk_equipe_etudiants PRIMARY KEY (equipe_id,cipEtudiant)
 );
-
+INSERT INTO schema_groupe.equipe_etudiants
+SELECT DISTINCT equipe_id,schema_groupe.usagers.cip from schema_groupe.equipe,schema_groupe.usagers,extern_equipe.etudiants_equipe_unite where
+    extern_equipe.etudiants_equipe_unite.department_id = schema_groupe.equipe.department_id and extern_equipe.etudiants_equipe_unite.trimester_id = schema_groupe.equipe.trimester_id
+    and extern_equipe.etudiants_equipe_unite.unit_id = schema_groupe.equipe.unit_id and extern_equipe.etudiants_equipe_unite.no = schema_groupe.equipe.no
+    and extern_equipe.etudiants_equipe_unite.grouping = schema_groupe.equipe.grouping
+    and extern_equipe.etudiants_equipe_unite.cip = schema_groupe.usagers.cip;
 
 CREATE TABLE schema_groupe.validation
 (
