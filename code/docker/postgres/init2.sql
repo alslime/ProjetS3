@@ -85,12 +85,9 @@ CREATE TABLE schema_groupe.horaireEquipe
     HPassageReelle TIME NOT NULL
 );
 
---Fill tables tests
-INSERT INTO extern_validation.validation(cipValideur, department_id, trimester_id, unit_id, local, dureePlageHoraire)
-values ('boua1007','1808','A21','s1geiapp4tito','C1-3014','0:30:0');
-
-INSERT INTO extern_validation.horaireEquipe(cipValideur,department_id,trimester_id,unit_id,grouping,no,HPassagePrevue,HPassageReelle)
-values ('boua1007','1808','A21','s1geiapp4tito',1,1,'0:30:0','0:30:0');
+--fill validation and horaireEquipe
+INSERT INTO schema_groupe.validation(cipValideur,local,dureePlageHoraire) values('boua1007','C1-5028','0:30:0');
+INSERT INTO schema_groupe.validation values('boua1007',10,'5:30:0','5:30:0');
 
 --Create views
 CREATE SCHEMA extern_validation;
@@ -102,6 +99,14 @@ CREATE OR REPLACE VIEW extern_validation.simpleHoraireEquipe AS
         and horaireequipe.unit_id = etudiants_equipe_unite.unit_id and horaireequipe.grouping = etudiants_equipe_unite.grouping
         and horaireequipe.no = etudiants_equipe_unite.no
     group by schema_groupe.horaireEquipe.no, hpassageprevue, hpassagereelle;
+
+CREATE OR REPLACE VIEW extern_validation.horaireEquipe AS
+SELECT schema_groupe.equipe.no, array_agg(schema_groupe.equipe_etudiants.cipetudiant), schema_groupe.horaireequipe.hpassageprevue,
+       schema_groupe.equipe.department_id, schema_groupe.equipe.trimester_id, schema_groupe.equipe.unit_id, schema_groupe.equipe.grouping, schema_groupe.horaireEquipe.hpassagereelle
+from schema_groupe.horaireEquipe, schema_groupe.equipe, schema_groupe.equipe_etudiants
+--WHERE schema_groupe.horaireEquipe.equipe_id = schema_groupe.equipe.equipe_id
+  --AND schema_groupe.horaireEquipe.equipe_id = schema_groupe.equipe_etudiants.equipe_id;
+group by schema_groupe.equipe.no, schema_groupe.horaireequipe.hpassageprevue,schema_groupe.equipe.department_id, schema_groupe.equipe.trimester_id, schema_groupe.equipe.unit_id, schema_groupe.equipe.grouping, schema_groupe.horaireEquipe.hpassagereelle;
 
 CREATE OR REPLACE VIEW extern_validation.horaireEquipe AS
     SELECT * from schema_groupe.horaireEquipe;
