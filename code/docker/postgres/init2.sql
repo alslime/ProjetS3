@@ -1,6 +1,21 @@
 --Create tables
 CREATE SCHEMA schema_groupe;
 
+CREATE TABLE schema_groupe.roles
+(
+    role_id SERIAL PRIMARY KEY,
+    nom TEXT NOT NULL
+);
+
+CREATE TABLE schema_groupe.usagers
+(
+    cip VARCHAR(8) NOT NULL,
+    prenon_nom TEXT NOT NULL,
+    role_id INT NOT NULL,
+    CONSTRAINT pk_usagers PRIMARY KEY cip
+);
+
+
 CREATE TABLE schema_groupe.validation
 (
     cipValideur varchar(8) NOT NULL,
