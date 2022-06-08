@@ -10,7 +10,7 @@ CREATE TABLE schema_groupe.roles
 
 CREATE TABLE schema_groupe.usagers
 (
-    cip VARCHAR(8) NOT NULL PRIMARY KEY ,
+    cip VARCHAR(8) NOT NULL PRIMARY KEY,
     prenon_nom TEXT NOT NULL,
     role_id INT NOT NULL,
         FOREIGN KEY (role_id) REFERENCES schema_groupe.roles(role_id)
