@@ -3,23 +3,23 @@ CREATE SCHEMA schema_groupe;
 
 CREATE TABLE schema_groupe.roles
 (
-    role_id SERIAL PRIMARY KEY,
-    nom TEXT NOT NULL
-    CONSTRAINT u_roles UNIQUE (nom)
+    role TEXT NOT NULL PRIMARY KEY
 );
-INSERT INTO schema_groupe.roles (nom) VALUES ('student');
-INSERT INTO schema_groupe.roles (nom) VALUES ('teacher');
+INSERT INTO schema_groupe.roles(role) VALUES ('STUDENT');
+INSERT INTO schema_groupe.roles(role) VALUES ('TEACHER');
 
 CREATE TABLE schema_groupe.usagers
 (
     cip VARCHAR(8) NOT NULL PRIMARY KEY,
     prenon_nom TEXT NOT NULL,
-    role_id INT NOT NULL,
-        FOREIGN KEY (role_id) REFERENCES schema_groupe.roles(role_id)
+    role_id TEXT NOT NULL,
+        FOREIGN KEY (role_id) REFERENCES schema_groupe.roles(role)
 );
-INSERT INTO schema_groupe.usagers (cip, prenon_nom)
-SELECT cip, prenon_nom FROM  extern_equipe.etudiants_equipe_unite;
-INSERT INTO schema_groupe.usagers (role_id) SELECT role_id FROM schema_groupe.roles;
+INSERT INTO schema_groupe.usagers (cip, prenon_nom, role_id)
+    SELECT DISTINCT ON (cip) cip, prenom_nom, role FROM extern_equipe.students order by cip;
+INSERT INTO schema_groupe.usagers (cip, prenon_nom, role_id)
+    SELECT DISTINCT ON (cip) cip, prenom_nom, role FROM extern_equipe.teachers
+    where cip not in (select cip from schema_groupe.usagers);
 
 CREATE TABLE schema_groupe.unit
 (
@@ -30,8 +30,8 @@ CREATE TABLE schema_groupe.unit
     CONSTRAINT u_unit UNIQUE (department_id,trimester_id,unit_id)
 );
 INSERT INTO schema_groupe.unit (department_id, trimester_id, unit_id)
-SELECT department_id, trimester_id, unit_id
-FROM  extern_equipe.etudiants_equipe_unite;
+    SELECT DISTINCT department_id, trimester_id, unit_id
+    FROM  extern_equipe.etudiants_equipe_unite;
 
 CREATE TABLE schema_groupe.equipe
 (
@@ -42,16 +42,20 @@ CREATE TABLE schema_groupe.equipe
     grouping INT NOT NULL,
     no INT NOT NULL,
     nom TEXT,
-    inscriptor TEXT
-    CONSTRAINT u_equipe UNIQUE (department_id,trimester_id,unit_id)
+    inscriptor TEXT,
+    CONSTRAINT u_equipe UNIQUE (department_id,trimester_id,unit_id,grouping,no)
 );
+INSERT INTO schema_groupe.equipe (department_id, trimester_id, unit_id,grouping,no,nom,inscriptor)
+    SELECT DISTINCT department_id, trimester_id, unit_id,grouping,no,nom,inscriptor
+    FROM  extern_equipe.equipes;
 
 CREATE TABLE schema_groupe.equipe_etudiants
 (
     equipe_id INT NOT NULL,
-    cipEtudiant VARCHAR(8) INT NOT NULL,
+    cipEtudiant VARCHAR(8) NOT NULL,
     CONSTRAINT pk_equipe_etudiants PRIMARY KEY (equipe_id,cipEtudiant)
 );
+
 
 CREATE TABLE schema_groupe.validation
 (
@@ -69,7 +73,7 @@ CREATE TABLE schema_groupe.horaireEquipe
     serial_unit_id INT NOT NULL,
     cipValideur varchar(8) NOT NULL,
         FOREIGN KEY (serial_unit_id,cipValideur) REFERENCES schema_groupe.validation(serial_unit_id,cipValideur),
-    equipe_id INT NOT NULL
+    equipe_id INT NOT NULL,
         FOREIGN KEY (equipe_id) REFERENCES schema_groupe.equipe(equipe_id),
     CONSTRAINT pk_horaireEquipe PRIMARY KEY (serial_unit_id,cipValideur,equipe_id),
     HPassagePrevue TIME NOT NULL,
