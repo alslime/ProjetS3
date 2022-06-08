@@ -1,5 +1,4 @@
 --Create tables
-
 CREATE SCHEMA schema_groupe;
 
 CREATE TABLE schema_groupe.roles
@@ -45,6 +44,13 @@ CREATE TABLE schema_groupe.equipe
     nom TEXT,
     inscriptor TEXT
     CONSTRAINT u_equipe UNIQUE (department_id,trimester_id,unit_id)
+);
+
+CREATE TABLE schema_groupe.equipe_etudiants
+(
+    equipe_id INT NOT NULL,
+    cipEtudiant VARCHAR(8) INT NOT NULL,
+    CONSTRAINT pk_equipe_etudiants PRIMARY KEY (equipe_id,cipEtudiant)
 );
 
 CREATE TABLE schema_groupe.validation
