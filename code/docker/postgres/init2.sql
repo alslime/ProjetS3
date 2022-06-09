@@ -86,8 +86,9 @@ CREATE TABLE schema_groupe.horaireEquipe
 );
 
 --fill validation and horaireEquipe
-INSERT INTO schema_groupe.validation values(7,'boua1007','C1-3021','0:45:0');
-INSERT INTO schema_groupe.horaireEquipe values(7,'boua1007',15,'4:30:0','4:30:0');
+-- INSERT INTO schema_groupe.validation values(7,'boua1007','C1-3021','0:45:0');
+-- INSERT INTO schema_groupe.horaireEquipe values(7,'boua1007',15,'4:30:0','4:30:0');
+-- INSERT INTO schema_groupe.horaireEquipe values(7,'boua1007',16,'5:00:0','5:30:0');
 
 --Create views
 CREATE SCHEMA extern_validation;
@@ -107,6 +108,16 @@ group by schema_groupe.equipe.no, schema_groupe.horaireequipe.hpassageprevue,
          schema_groupe.equipe.grouping, schema_groupe.horaireEquipe.hpassagereelle,
          schema_groupe.validation.dureePlageHoraire, schema_groupe.validation.local, schema_groupe.validation.cipvalideur;
 
+CREATE OR REPLACE VIEW extern_validation.validation AS
+SELECT schema_groupe.unit.unit_id,schema_groupe.unit.department_id,schema_groupe.unit.trimester_id, schema_groupe.validation.cipValideur, schema_groupe.validation.local,
+       array_agg(schema_groupe.horaireequipe.equipe_id), schema_groupe.validation.dureeplagehoraire
+From ((schema_groupe.validation
+LEFT JOIN schema_groupe.horaireequipe ON validation.serial_unit_id = horaireequipe.serial_unit_id and validation.cipvalideur = horaireequipe.cipvalideur)
+INNER JOIN schema_groupe.unit ON validation.serial_unit_id = unit.serial_unit_id)
+group by schema_groupe.unit.unit_id, schema_groupe.unit.department_id,schema_groupe.unit.trimester_id, schema_groupe.unit.department_id,
+         schema_groupe.unit.unit_id, schema_groupe.validation.cipValideur, schema_groupe.validation.local, schema_groupe.validation.cipValideur,
+         schema_groupe.validation.local, schema_groupe.validation.dureeplagehoraire;
+
 --Create triggers
 CREATE OR REPLACE FUNCTION extern_validation.delete_horaireEquipe()
     RETURNS TRIGGER
@@ -121,4 +132,4 @@ CREATE TRIGGER delete_horaireEquipe
     FOR EACH ROW EXECUTE PROCEDURE extern_validation.delete_horaireEquipe();
 
 --Test trigger
-DELETE FROM schema_groupe.horaireEquipe WHERE equipe_id = 15;
+-- DELETE FROM schema_groupe.horaireEquipe WHERE equipe_id = 15;
