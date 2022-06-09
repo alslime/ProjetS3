@@ -25,18 +25,7 @@ public class EquipeService {
 	public List<Equipe> getAllEquipes(
 	) {
 		List<Equipe> equipes = equipeMapper.allEquipes();
-		return this.unescapeEntities(equipes);
+		return equipes;
 	}
 
-	public static Equipe unescapeEntities(Equipe equipe) {
-		//equipe.departement_id = Parser.unescapeEntities(equipe.departement_id, true);
-		return equipe;
-	}
-
-	public List<Equipe> unescapeEntities(List<Equipe> equipes) {
-		return equipes
-				.stream()
-				.map(EquipeService::unescapeEntities)
-				.collect(Collectors.toList());
-	}
 }
