@@ -1,10 +1,7 @@
 package ca.usherbrooke.fgen.api.service;
 
 import ca.usherbrooke.fgen.api.business.HoraireEquipe;
-import ca.usherbrooke.fgen.api.business.Message;
 import ca.usherbrooke.fgen.api.persistence.HoraireEquipeMapper;
-import ca.usherbrooke.fgen.api.persistence.MessageMapper;
-import org.jsoup.parser.Parser;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -20,18 +17,18 @@ import java.util.stream.Collectors;
 @Consumes(MediaType.APPLICATION_JSON)
 public class HoraireEquipeService {
     @Inject
-    HoraireEquipeMapper horaireEquipeMapperMapper;
+    HoraireEquipeMapper horaireEquipeMapper;
 
     @GET
     @Path("getallHorairesEquipe")
     public List<HoraireEquipe> getAllHorairesEquipe(
     ) {
-        List<HoraireEquipe> HE = horaireEquipeMapperMapper.allHorairesEquipe();
+        List<HoraireEquipe> HE = horaireEquipeMapper.allHorairesEquipe();
         return this.unescapeEntities(HE);
     }
 
     public static HoraireEquipe unescapeEntities(HoraireEquipe HE) {
-        HE.description = Parser.unescapeEntities(HE.description, true);
+        //HE.local = Parser.unescapeEntities(HE.local, true);
         return HE;
     }
 

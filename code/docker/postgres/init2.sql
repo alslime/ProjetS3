@@ -87,7 +87,7 @@ CREATE TABLE schema_groupe.horaireEquipe
 
 --fill validation and horaireEquipe
 INSERT INTO schema_groupe.validation values(7,'boua1007','C1-3021','0:45:0');
-INSERT INTO schema_groupe.horaireEquipe values(7,'boua1007',13,'4:30:0','4:30:0');
+INSERT INTO schema_groupe.horaireEquipe values(7,'boua1007',15,'4:30:0','4:30:0');
 
 --Create views
 CREATE SCHEMA extern_validation;
@@ -119,3 +119,6 @@ END $$;
 CREATE TRIGGER delete_horaireEquipe
     INSTEAD OF DELETE on extern_validation.horaireEquipe
     FOR EACH ROW EXECUTE PROCEDURE extern_validation.delete_horaireEquipe();
+
+--Test trigger
+DELETE FROM schema_groupe.horaireEquipe WHERE equipe_id = 15;
