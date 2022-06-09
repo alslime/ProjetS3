@@ -1,9 +1,6 @@
 export async function getMessages() {
     const messages = await webix.ajax().get("http://localhost:8089/api/getallmessages")
-        .then(response => response.json())
-        .then(data => data.map((message) => {
-            return message;
-        }));
+        .then(response => response.json());
     return messages;
 }
 
