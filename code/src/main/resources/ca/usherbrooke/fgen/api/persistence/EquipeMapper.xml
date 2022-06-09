@@ -5,8 +5,8 @@
 <mapper namespace="ca.usherbrooke.fgen.api.persistence.EquipeMapper">
 
 
-    <select id="allEquipees" resultType="ca.usherbrooke.fgen.api.business.Equipe">
-
+    <select id="allEquipes" resultType="ca.usherbrooke.fgen.api.business.Equipe">
+        select no, local, hpassageprevue, hpassagereelle from extern_validation.horaireequipe
 
     </select>
 

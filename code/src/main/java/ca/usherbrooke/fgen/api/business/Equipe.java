@@ -1,9 +1,10 @@
 package ca.usherbrooke.fgen.api.business;
 
+import java.util.List;
+
 public class Equipe {
-    public Integer numero;
-    public String nom;
-    public String heureDebut;
-    public String heureEstime;
-    public String description;
+    public Integer no;
+    public String hpassageprevue;
+    public String hpassagereelle;
+    public String local;
 }

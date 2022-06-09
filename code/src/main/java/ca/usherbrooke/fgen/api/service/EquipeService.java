@@ -20,7 +20,7 @@ public class EquipeService {
 	@Inject
 	EquipeMapper equipeMapper;
 
-
+	@GET
 	@Path("getallequipes")
 	public List<Equipe> getAllEquipes(
 	) {
@@ -29,7 +29,7 @@ public class EquipeService {
 	}
 
 	public static Equipe unescapeEntities(Equipe equipe) {
-		equipe.description = Parser.unescapeEntities(equipe.description, true);
+		//equipe.departement_id = Parser.unescapeEntities(equipe.departement_id, true);
 		return equipe;
 	}
 
