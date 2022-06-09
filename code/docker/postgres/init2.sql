@@ -108,9 +108,12 @@ group by schema_groupe.equipe.no, schema_groupe.horaireequipe.hpassageprevue,
          schema_groupe.equipe.grouping, schema_groupe.horaireEquipe.hpassagereelle,
          schema_groupe.validation.dureePlageHoraire, schema_groupe.validation.local, schema_groupe.validation.cipvalideur;
 
+AlTER VIEW
+    ADD COLUMN new_column_name data_type constraint;
+
 CREATE OR REPLACE VIEW extern_validation.validation AS
 SELECT schema_groupe.unit.unit_id,schema_groupe.unit.department_id,schema_groupe.unit.trimester_id, schema_groupe.validation.cipValideur, schema_groupe.validation.local,
-       array_agg(schema_groupe.horaireequipe.equipe_id), schema_groupe.validation.dureeplagehoraire
+       array_agg(schema_groupe.horaireequipe.equipe_id), schema_groupe.validation.dureeplagehoraire,TIME '00:00:00' as retard
 From ((schema_groupe.validation
 LEFT JOIN schema_groupe.horaireequipe ON validation.serial_unit_id = horaireequipe.serial_unit_id and validation.cipvalideur = horaireequipe.cipvalideur)
 INNER JOIN schema_groupe.unit ON validation.serial_unit_id = unit.serial_unit_id)
