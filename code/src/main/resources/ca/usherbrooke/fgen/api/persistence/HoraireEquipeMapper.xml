@@ -4,6 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ca.usherbrooke.fgen.api.persistence.HoraireEquipeMapper">
     <select id="allHorairesEquipe" resultType="ca.usherbrooke.fgen.api.business.HoraireEquipe">
-        select no, unit_id, local from extern_validation.horaireequipe
+        select no, hpassageprevue, hpassagereelle, local from extern_validation.horaireequipe
     </select>
 </mapper>

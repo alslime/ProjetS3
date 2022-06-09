@@ -24,18 +24,8 @@ public class HoraireEquipeService {
     public List<HoraireEquipe> getAllHorairesEquipe(
     ) {
         List<HoraireEquipe> HE = horaireEquipeMapper.allHorairesEquipe();
-        return this.unescapeEntities(HE);
-    }
-
-    public static HoraireEquipe unescapeEntities(HoraireEquipe HE) {
-        //HE.local = Parser.unescapeEntities(HE.local, true);
         return HE;
     }
 
-    public List<HoraireEquipe> unescapeEntities(List<HoraireEquipe> HEs) {
-        return HEs
-                .stream()
-                .map(HoraireEquipeService::unescapeEntities)
-                .collect(Collectors.toList());
-    }
+
 }
