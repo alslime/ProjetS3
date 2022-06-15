@@ -7,17 +7,24 @@ services:
     ports:
       - 5444:5432
     volumes:
-      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./postgres/data:/var/lib/postgresql/data
+      - ./postgres/config:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DATABASE: ${POSTGRES_DATABASE}
+    networks:
+      - theNetwork
+
   npmInstall:
     image: "node:latest"
     working_dir: /home/node/app
     volumes:
       - ../src/main/resources/META-INF/resources:/home/node/app
     command: npm install
+    networks:
+      - theNetwork
+
   npmBuild:
     image: "node:latest"
     working_dir: /home/node/app
@@ -26,3 +33,8 @@ services:
     volumes:
       - ../src/main/resources/META-INF/resources:/home/node/app
     command: npm exec webpack
+    networks:
+      - theNetwork
+
+networks:
+  theNetwork:
