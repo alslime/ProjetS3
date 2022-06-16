@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import { Button } from 'react-native'
 
 class Square extends React.Component {
+
 	render() {
 		return (
 			<button className="square">
@@ -11,6 +13,7 @@ class Square extends React.Component {
 		);
 	}
 }
+
 
 class Board extends React.Component {
 	renderSquare(i) {
@@ -59,7 +62,9 @@ class Game extends React.Component {
 	}
 }
 
+
 // ========================================
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
+
