@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ca.usherbrooke.fgen.api.persistence.ValidationMapper">
+    <insert id="insertValidation">
+        insert into extern_php.message(id,
+                                       trimester_id,
+                                       profile_id,
+                                       unit,
+                                       description,
+                                       cip,
+                                       inscriptor)
+        values (#{message.id},
+                #{message.trimesterId},
+                #{message.profileId},
+                #{message.unit},
+                #{message.description},
+                #{message.cip},
+                #{message.inscriptor})
+            on conflict (id) do update set description = excluded.description;
+    </insert>
+</mapper>

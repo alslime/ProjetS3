@@ -70,6 +70,7 @@ CREATE TABLE schema_groupe.validation
         FOREIGN KEY (cipValideur) REFERENCES schema_groupe.usagers(cip),
     local TEXT,
     dureePlageHoraire INTERVAL NOT NULL,
+    retard INTERVAL,
     CONSTRAINT pk_validation PRIMARY KEY (serial_unit_id,cipValideur)
 );
 
@@ -82,12 +83,13 @@ CREATE TABLE schema_groupe.horaireEquipe
         FOREIGN KEY (equipe_id) REFERENCES schema_groupe.equipe(equipe_id),
     CONSTRAINT pk_horaireEquipe PRIMARY KEY (serial_unit_id,cipValideur,equipe_id),
     HPassagePrevue TIME NOT NULL,
-    HPassageReelle TIME NOT NULL
+    HPassageReelle TIME NOT NULL,
+    estTerminee BOOL NOT NULL
 );
 
 --fill validation and horaireEquipe
-INSERT INTO schema_groupe.validation values(7,'boua1007','C1-3021','0:45:0');
-INSERT INTO schema_groupe.horaireEquipe values(7,'boua1007',15,'4:30:0','4:30:0');
+INSERT INTO schema_groupe.validation values(7,'boua1007','C1-3021','0:45:0','0:0:0');
+INSERT INTO schema_groupe.horaireEquipe values(7,'boua1007',15,'4:30:0','4:30:0',false);
 
 --Create views
 CREATE SCHEMA extern_validation;
@@ -106,6 +108,16 @@ group by schema_groupe.equipe.no, schema_groupe.horaireequipe.hpassageprevue,
          schema_groupe.equipe.department_id, schema_groupe.equipe.trimester_id, schema_groupe.equipe.unit_id,
          schema_groupe.equipe.grouping, schema_groupe.horaireEquipe.hpassagereelle,
          schema_groupe.validation.dureePlageHoraire, schema_groupe.validation.local, schema_groupe.validation.cipvalideur;
+
+CREATE OR REPLACE VIEW extern_validation.validation AS
+SELECT schema_groupe.unit.unit_id,schema_groupe.unit.department_id,schema_groupe.unit.trimester_id, schema_groupe.validation.cipValideur, schema_groupe.validation.local,
+       array_agg(schema_groupe.horaireequipe.equipe_id), schema_groupe.validation.dureeplagehoraire,schema_groupe.validation.retard
+From ((schema_groupe.validation
+    LEFT JOIN schema_groupe.horaireequipe ON validation.serial_unit_id = horaireequipe.serial_unit_id and validation.cipvalideur = horaireequipe.cipvalideur)
+    INNER JOIN schema_groupe.unit ON validation.serial_unit_id = unit.serial_unit_id)
+group by schema_groupe.unit.unit_id, schema_groupe.unit.department_id,schema_groupe.unit.trimester_id, schema_groupe.unit.department_id,
+         schema_groupe.unit.unit_id, schema_groupe.validation.cipValideur, schema_groupe.validation.local, schema_groupe.validation.cipValideur,
+         schema_groupe.validation.local, schema_groupe.validation.dureeplagehoraire,schema_groupe.validation.retard;
 
 --Create triggers
 CREATE OR REPLACE FUNCTION extern_validation.delete_horaireEquipe()
