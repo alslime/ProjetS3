@@ -1,12 +1,10 @@
 package ca.usherbrooke.fgen.api.business;
 
 
+import java.sql.Time;
+
 public class HoraireEquipe {
-    public Integer no;
-    public String hpassageprevue;
-    public String hpassagereelle;
-    //public String nom;
-    //public String heureDebut;
-    //public String heureEstime;
-    public String local;
+    public Time hpassageprevue;
+    public Equipe equipe;
+    public Validation validation;
 }

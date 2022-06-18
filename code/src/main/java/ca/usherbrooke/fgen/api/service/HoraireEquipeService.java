@@ -7,10 +7,6 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
-import java.util.stream.Collectors;
-
-
-
 
 @Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
@@ -20,12 +16,16 @@ public class HoraireEquipeService {
     HoraireEquipeMapper horaireEquipeMapper;
 
     @GET
-    @Path("getallHorairesEquipe")
+    @Path("getAllHorairesEquipe")
     public List<HoraireEquipe> getAllHorairesEquipe(
     ) {
         List<HoraireEquipe> HE = horaireEquipeMapper.allHorairesEquipe();
         return HE;
     }
 
-
+    @PUT
+    @Path("insertHoraireEquipe")
+    public void insertHoraireEquipe(HoraireEquipe HE) {
+        horaireEquipeMapper.insertHoraireEquipe(HE);
+    }
 }

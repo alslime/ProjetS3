@@ -4,6 +4,27 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ca.usherbrooke.fgen.api.persistence.HoraireEquipeMapper">
     <select id="allHorairesEquipe" resultType="ca.usherbrooke.fgen.api.business.HoraireEquipe">
-        select no, hpassageprevue, hpassagereelle, local from extern_validation.horaireequipe
+        SELECT exHE.no,
+               exHE.hpassageprevue,
+               exHE.local
+        FROM extern_validation.horaireequipe exHE;
     </select>
+
+    <insert id="insertHoraireEquipe">
+        INSERT INTO extern_validation.horaireEquipe(trimester_id,
+                                                    department_id,
+                                                    unit_id,
+                                                    cipvalideur,
+                                                    grouping,
+                                                    no,
+                                                    hpassageprevue)
+        VALUES (#{HE.validation.trimester_id},
+                #{HE.validation.department_id},
+                #{HE.validation.unit_id},
+                #{HE.validation.cipvalideur},
+                #{HE.equipe.grouping},
+                #{HE.equipe.no},
+                #{HE.hpassageprevue});
+    </insert>
+
 </mapper>
