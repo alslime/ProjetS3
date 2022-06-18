@@ -134,15 +134,11 @@ SELECT schema_groupe.unit.unit_id,
        schema_groupe.unit.trimester_id,
        schema_groupe.validation.cipValideur,
        schema_groupe.validation.local,
-       array_agg(schema_groupe.horaireequipe.equipe_id),
        schema_groupe.validation.dureeplagehoraire,
        schema_groupe.validation.retard
 From ((schema_groupe.validation
     LEFT JOIN schema_groupe.horaireequipe ON validation.serial_unit_id = horaireequipe.serial_unit_id and validation.cipvalideur = horaireequipe.cipvalideur)
-    INNER JOIN schema_groupe.unit ON validation.serial_unit_id = unit.serial_unit_id)
-group by schema_groupe.unit.unit_id, schema_groupe.unit.department_id,schema_groupe.unit.trimester_id, schema_groupe.unit.department_id,
-         schema_groupe.unit.unit_id, schema_groupe.validation.cipValideur, schema_groupe.validation.local, schema_groupe.validation.cipValideur,
-         schema_groupe.validation.local, schema_groupe.validation.dureeplagehoraire,schema_groupe.validation.retard;
+    INNER JOIN schema_groupe.unit ON validation.serial_unit_id = unit.serial_unit_id);
 
 
 --**********************************************************
@@ -190,6 +186,7 @@ AS $BODY$ BEGIN
         equipe_id=schema_groupe.equipe.equipe_id,
         hpassageprevue=new.hpassageprevue,
         estterminee=new.estterminee
+    FROM schema_groupe.validation, schema_groupe.equipe, schema_groupe.unit
     WHERE schema_groupe.horaireEquipe.serial_unit_id = schema_groupe.equipe.serial_unit_id
       AND new.cipvalideur = schema_groupe.horaireEquipe.cipValideur
       AND schema_groupe.horaireEquipe.equipe_id = schema_groupe.equipe.equipe_id
@@ -241,6 +238,7 @@ AS $BODY$ BEGIN
     SET local = new.local,
         dureePlageHoraire = new.dureeplagehoraire,
         retard = new.retard
+    FROM schema_groupe.unit
     WHERE new.cipValideur = schema_groupe.validation.cipValideur
       AND schema_groupe.unit.serial_unit_id = schema_groupe.validation.serial_unit_id
       AND new.trimester_id = schema_groupe.unit.trimester_id
@@ -268,5 +266,21 @@ INSERT INTO extern_validation.validation(trimester_id,department_id,unit_id,cipv
 INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
     VALUES ('E22',1808,'s6eapp1','boua1007',1,2,'4:30:00');
 
---UPDATE extern_validation.validation
---SET
+UPDATE extern_validation.validation
+SET local = 'C1-5119',
+    dureeplagehoraire = '0:15:0',
+    retard = '0:40:0'
+WHERE trimester_id = 'E22'
+    AND department_id = '1808'
+    AND unit_id = 's6eapp1'
+    AND cipvalideur = 'boua1007';
+
+UPDATE extern_validation.horaireEquipe
+SET hpassageprevue = '2:00:00',
+    estterminee = TRUE
+WHERE trimester_id = 'E22'
+    AND department_id = '1808'
+    AND unit_id = 's6eapp1'
+    AND cipvalideur = 'boua1007'
+    AND no = 2
+    AND grouping = 1;
