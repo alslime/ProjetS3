@@ -8,8 +8,6 @@ import java.util.List;
 @Mapper
 public interface HoraireEquipeMapper {
     List<HoraireEquipe> allHorairesEquipe();
-
     void insertHoraireEquipe(HoraireEquipe HE);
-
-    void HoraireEquipeFini(HoraireEquipe HE);
+    void finirHoraireEquipe(HoraireEquipe HE);
 }

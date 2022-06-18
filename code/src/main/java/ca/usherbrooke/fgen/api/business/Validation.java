@@ -6,5 +6,6 @@ public class Validation {
     public Unit unit;
     public String local;
     public String cipvalideur;
+    public Time dureeplagehoraire;
     public Time retard;
 }

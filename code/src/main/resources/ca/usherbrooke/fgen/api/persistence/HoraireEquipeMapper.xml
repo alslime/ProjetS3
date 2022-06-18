@@ -18,13 +18,24 @@
                                                     grouping,
                                                     no,
                                                     hpassageprevue)
-        VALUES (#{HE.validation.trimester_id},
-                #{HE.validation.department_id},
-                #{HE.validation.unit_id},
+        VALUES (#{HE.validation.unit.trimester_id},
+                #{HE.validation.unit.department_id},
+                #{HE.validation.unit.unit_id},
                 #{HE.validation.cipvalideur},
                 #{HE.equipe.grouping},
                 #{HE.equipe.no},
                 #{HE.hpassageprevue});
     </insert>
+
+    <update id="finirHoraireEquipe">
+        UPDATE extern_validation.horaireEquipe
+        SET estterminee = TRUE
+        WHERE trimester_id = #{HE.validation.unit.trimester_id}
+          AND department_id = #{HE.validation.unit.department_id}
+          AND unit_id = #{HE.validation.unit.unit_id}
+          AND cipvalideur = #{HE.validation.cipvalideur}
+          AND no = #{HE.equipe.no}
+          AND grouping = #{HE.equipe.grouping};
+    </update>
 
 </mapper>

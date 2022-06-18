@@ -28,4 +28,10 @@ public class HoraireEquipeService {
     public void insertHoraireEquipe(HoraireEquipe HE) {
         horaireEquipeMapper.insertHoraireEquipe(HE);
     }
+
+    @PUT
+    @Path("finirHoraireEquipe")
+    public void finirHoraireEquipe(HoraireEquipe HE) {
+        horaireEquipeMapper.finirHoraireEquipe(HE);
+    }
 }

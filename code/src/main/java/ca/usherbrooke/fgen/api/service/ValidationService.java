@@ -2,6 +2,7 @@ package ca.usherbrooke.fgen.api.service;
 
 import ca.usherbrooke.fgen.api.business.Validation;
 import ca.usherbrooke.fgen.api.persistence.ValidationMapper;
+import org.apache.ibatis.annotations.Update;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -19,4 +20,5 @@ public class ValidationService {
     public void insertValidation(Validation validation) {
         validationMapperMapper.insertValidation(validation);
     }
+
 }
