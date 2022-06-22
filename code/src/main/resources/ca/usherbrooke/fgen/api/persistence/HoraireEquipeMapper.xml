@@ -3,12 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ca.usherbrooke.fgen.api.persistence.HoraireEquipeMapper">
-    <select id="allHorairesEquipe" resultType="ca.usherbrooke.fgen.api.business.HoraireEquipe">
-        SELECT exHE.no,
-               exHE.hpassageprevue,
-               exHE.local
-        FROM extern_validation.horaireequipe exHE;
+    <select id="allHorairesEquipe" resultMap="mapDBModelHoraireEquipe">
+        SELECT * FROM extern_validation.horaireequipe;
     </select>
+
+    <resultMap id="mapDBModelHoraireEquipe" type="ca.usherbrooke.fgen.api.business.DBmodelHoraireEquipe">
+        <id property="no" column="no"/>
+        <result property="array_agg" column="array_agg"/>
+        <result property="trimester_id" column="trimester_id"/>
+        <result property="department_id" column="department_id"/>
+        <result property="unit_id" column="unit_id"/>
+    </resultMap>
 
     <insert id="insertHoraireEquipe">
         INSERT INTO extern_validation.horaireEquipe(trimester_id,
@@ -39,3 +44,5 @@
     </update>
 
 </mapper>
+
+

@@ -5,5 +5,5 @@ import java.util.List;
 public class Equipe {
     public Integer grouping;
     public Integer no;
-    List<Usager> membres;
+    public String membres;
 }

@@ -112,6 +112,7 @@ SELECT schema_groupe.equipe.no,
        schema_groupe.validation.local,
        schema_groupe.horaireequipe.hpassageprevue,
        schema_groupe.validation.cipvalideur,
+       schema_groupe.validation.retard,
        schema_groupe.horaireequipe.estterminee
 FROM schema_groupe.horaireEquipe,
      schema_groupe.equipe,
@@ -126,7 +127,8 @@ WHERE schema_groupe.horaireEquipe.equipe_id = schema_groupe.equipe.equipe_id
 GROUP BY schema_groupe.equipe.no, schema_groupe.horaireequipe.hpassageprevue,
          schema_groupe.unit.department_id, schema_groupe.unit.trimester_id, schema_groupe.unit.unit_id,
          schema_groupe.equipe.grouping, schema_groupe.validation.dureePlageHoraire,
-         schema_groupe.validation.local, schema_groupe.validation.cipvalideur, schema_groupe.horaireequipe.estterminee;
+         schema_groupe.validation.local, schema_groupe.validation.cipvalideur, schema_groupe.horaireequipe.estterminee,
+         schema_groupe.validation.retard;
 
 CREATE OR REPLACE VIEW extern_validation.validation AS
 SELECT schema_groupe.unit.unit_id,
@@ -261,10 +263,10 @@ CREATE TRIGGER update_validation
 --TESTS
 --**********************************************************
 INSERT INTO extern_validation.validation(trimester_id,department_id,unit_id,cipvalideur,local,dureeplagehoraire)
-    VALUES ('E22',1808,'s6eapp1','boua1007','C1-3021','0:45:0');
+    VALUES ('E22',1808,'s6eapp1','houj1308','C1-3021','0:45:0');
 
 INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
-    VALUES ('E22',1808,'s6eapp1','boua1007',1,2,'4:30:00');
+    VALUES ('E22',1808,'s6eapp1','houj1308',1,2,'4:30:00');
 
 UPDATE extern_validation.validation
 SET local = 'C1-5119',
