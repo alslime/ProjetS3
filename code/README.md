@@ -1,21 +1,12 @@
-exemple Message 
+Projet des Barres tendres
 ===================
 
-
-
 ### Comment l'exécuter
-
-- Mettre en place la base de données postgres dans docker Assurez vous que docker est démarrer.
-- cd docker 
-- docker-compose up -d
-
-- Démarrer le service en exécutant le main dans  intellij
-- Tester un service dans un browser : localhost:8089/api/getallmessages
-- installer sur nodes.js et npm
-
-- run ```npm install```
-- run ```npm exec webpack build```
-- run ``` npm start --watch```
-- open ```http://localhost:8089```
+1) Va dans ./docker et fait docker-compose up -d
+2) Va dans ./front-end
+3) Si tu run le truc pour la premiere fois run ```npm install```
+4) Start le web avec ```npm start```
+5) Execute le main (Quarkus)
+6) Ca devrait marcher normalement
 
 

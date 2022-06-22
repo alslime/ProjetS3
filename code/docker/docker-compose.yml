@@ -16,25 +16,5 @@ services:
     networks:
       - theNetwork
 
-  npmInstall:
-    image: "node:latest"
-    working_dir: /home/node/app
-    volumes:
-      - ../src/main/resources/META-INF/resources:/home/node/app
-    command: npm install
-    networks:
-      - theNetwork
-
-  npmBuild:
-    image: "node:latest"
-    working_dir: /home/node/app
-    depends_on:
-      - npmInstall
-    volumes:
-      - ../src/main/resources/META-INF/resources:/home/node/app
-    command: npm exec webpack
-    networks:
-      - theNetwork
-
 networks:
   theNetwork:
