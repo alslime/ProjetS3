@@ -1,5 +1,7 @@
 import Keycloak from "keycloak-js";
 import {Component} from "react";
+import App from "./App";
+import {BrowserRouter} from "react-router-dom";
 
 class Secured extends Component {
 
@@ -21,9 +23,9 @@ class Secured extends Component {
 	render() {
 		if (this.state.keycloak) {
 			if (this.state.authenticated) return (
-				<div>
-					<p>Ceci est un service exigeant une authentification.</p>
-				</div>
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
 			); else return (<div>Impossible de s'authentifier!</div>)
 		}
 		return (

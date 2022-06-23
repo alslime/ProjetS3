@@ -13,7 +13,6 @@ import javax.ws.rs.core.MediaType;
 @Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Authenticated
 public class ValidationService {
 
 
