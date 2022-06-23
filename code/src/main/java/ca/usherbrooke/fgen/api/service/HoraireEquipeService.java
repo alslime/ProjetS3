@@ -24,7 +24,6 @@ public class HoraireEquipeService {
 
     @GET
     @Path("getAllHorairesEquipe")
-    @Authenticated
     public List<HoraireEquipe> getAllHorairesEquipe(
     ) {
         LOG.info("Hello");
