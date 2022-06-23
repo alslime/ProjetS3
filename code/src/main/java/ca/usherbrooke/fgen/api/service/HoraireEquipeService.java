@@ -3,6 +3,7 @@ package ca.usherbrooke.fgen.api.service;
 import ca.usherbrooke.fgen.api.business.*;
 import ca.usherbrooke.fgen.api.persistence.HoraireEquipeConvert;
 import ca.usherbrooke.fgen.api.persistence.HoraireEquipeMapper;
+import io.quarkus.security.Authenticated;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
