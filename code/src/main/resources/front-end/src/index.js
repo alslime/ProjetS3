@@ -1,17 +1,8 @@
 import React from 'react';
-import {createRoot} from 'react-dom/client';
-
+import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App.js';
-import {BrowserRouter} from "react-router-dom";
+import Secured from "./Secured";
 
-const app = (
-	<BrowserRouter>
-		<App />
-	</BrowserRouter>
-);
+ReactDOM.render(<Secured />, document.getElementById('root'));
 
-const container = document.getElementById('root');
-const root = createRoot(container);
-root.render(app)
 
