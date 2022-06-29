@@ -1,5 +1,4 @@
 import {Routes, Route} from "react-router-dom";
-
 import StudentPage from "./pages/StudentPage";
 import TeacherPage from "./pages/TeacherPage";
 import {Component} from "react";

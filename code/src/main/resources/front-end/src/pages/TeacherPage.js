@@ -1,9 +1,11 @@
 import Validation from "../components/Validation";
 import {useState, useEffect} from "react";
+import "../index.css"
 
 function TeacherPage(){
 	const [isLoading, setLoading] = useState(true);
 	const [loadedValidation, setLoadedValidation] = useState([]);
+	const [loadedInfoValidation, setLoadedInfoValidation] = useState(null);
 
 	useEffect(() => {
 		setLoading(true);
@@ -22,8 +24,14 @@ function TeacherPage(){
 				};
 				validation.push(HoraireEquipes);
 			}
-			setLoading(false);
+			const validInfo = {
+				local: data[0].validation.local,
+				duree: data[0].validation.dureeplagehoraire,
+				retard: data[0].validation.retard
+			}
 			setLoadedValidation(validation);
+			setLoadedInfoValidation(validInfo);
+			setLoading(false);
 		});
 	}, []);
 
@@ -34,9 +42,11 @@ function TeacherPage(){
 	}
 
 	return(
+
 		<div>
-			<h1>Page des professeurs</h1>
-			<Validation validation={loadedValidation}/>
+			<h1 className={"title"}>Page des professeurs</h1>
+			<Validation validation={loadedValidation} infoValidation={loadedInfoValidation}/>
+			<button className={"bouton"}> Prochaine validation </button>
 		</div>
 	);
 }

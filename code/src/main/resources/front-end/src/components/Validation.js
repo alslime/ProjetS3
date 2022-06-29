@@ -1,11 +1,12 @@
 import HoraireEquipe from "./HoraireEquipe";
 import InfoValidation from "./InfoValidation";
+import "./Components.css"
 
 function Validation(props){
 	return(
 		<div>
-			<table>
-				<tr>
+			<table className={"table"}>
+				<tr className={"entete"}>
 					<th>Numero</th>
 					<th>Equipiers</th>
 					<th>Horaire</th>

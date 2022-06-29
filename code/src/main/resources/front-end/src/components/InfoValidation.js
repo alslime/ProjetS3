@@ -1,9 +1,9 @@
 function InfoValidation(props){
 	return(
-		<div>
+		<div className={"info"}>
 			<div>Local : {props.local}</div>
 			<div>Duree : {props.duree}</div>
-			<div>Retard actuel : {props.retard}</div>
+			<div>Retard actuel {props.retard}</div>
 		</div>
 	);
 }

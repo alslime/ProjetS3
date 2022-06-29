@@ -1,0 +1,31 @@
+.entete{
+    font-size: 20px;
+    background-color: lightgreen;
+}
+
+.table{
+    width: 100%;
+}
+
+
+
+td{
+    background-color: lightgray;
+}
+
+.table, th, td{
+    border: 1px solid;
+    text-align: center;
+    border-collapse: collapse;
+    height: 50px;
+
+}
+
+.info{
+    font-weight: bold;
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 15px;
+    width: 60%;
+}

@@ -1,5 +1,6 @@
 import Validation from "../components/Validation";
 import {useState, useEffect} from "react";
+import "./Pages.css"
 
 function StudentPage(){
 	const [isLoading, setLoading] = useState(true);
@@ -42,7 +43,7 @@ function StudentPage(){
 
 	return(
 		<div>
-			<h1>Page des etudiants</h1>
+			<h1 className={"title"}>Page des etudiants</h1>
 			<Validation validation={loadedValidation} infoValidation={loadedInfoValidation}/>
 		</div>
 	);
