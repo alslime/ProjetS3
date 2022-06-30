@@ -5,6 +5,6 @@ import Secured from "./Secured";
 import App from "./App";
 import {BrowserRouter} from "react-router-dom";
 
-ReactDOM.render(<BrowserRouter className={"container"}><App /></BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(<Secured/>, document.getElementById('root'));
 
 
