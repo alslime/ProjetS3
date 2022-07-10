@@ -16,6 +16,7 @@ services:
     KEYCLOAK_ADMIN_PASSWORD: keycloak
    networks:
      - theNetwork
+
   database:
     image: postgres:13
     container_name: database
