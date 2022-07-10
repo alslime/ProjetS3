@@ -7,6 +7,7 @@ Projet des Barres tendres
 3) Si tu run le truc pour la premiere fois run ```npm install```
 4) Start le web avec ```npm start```
 5) Execute le main (Quarkus)
-6) Ca devrait marcher normalement
+6) localhost:8180 pour set keycloak
+7) Ca devrait marcher normalement
 
 
