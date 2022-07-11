@@ -1,7 +1,5 @@
 package ca.usherbrooke.fgen.api.business;
 
-import java.sql.Time;
-
 public class DBmodelHoraireEquipe {
     public Integer no;
     public String array_agg;

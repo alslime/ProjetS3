@@ -18,19 +18,17 @@ import java.util.logging.Logger;
 public class HoraireEquipeService {
     @Inject
     HoraireEquipeMapper horaireEquipeMapper;
-
-    //HoraireEquipeConvert horaireEquipeConvert = new HoraireEquipeConvert();
     private static final Logger LOG = Logger.getLogger(String.valueOf(HoraireEquipeService.class));
 
     @GET
     @Path("getAllHorairesEquipe")
     public List<HoraireEquipe> getAllHorairesEquipe(
     ) {
-        LOG.info("Hello");
+        LOG.info("getAllHorairesEquipe");
         List<HoraireEquipe> listeHE = new ArrayList<HoraireEquipe>();
-
         List<DBmodelHoraireEquipe> listeHEM = this.horaireEquipeMapper.allHorairesEquipe();
 
+        //map HoraireEquipe from DBmodelHoraireEquipe
         for (DBmodelHoraireEquipe obj : listeHEM) {
             Unit unit = new Unit();
             unit.unit_id = obj.unit_id;
@@ -56,11 +54,6 @@ public class HoraireEquipeService {
             listeHE.add(HE);
         }
         return listeHE;
-
-        //horaireEquipeConvert.getAllHorairesEquipe();
-        //return null;
-
-        //return horaireEquipeConvert.getAllHorairesEquipe();
     }
 
 //    @PUT

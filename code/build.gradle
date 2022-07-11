@@ -13,16 +13,16 @@ repositories {
 }
 
 dependencies {
-    implementation 'io.quarkus:quarkus-keycloak-authorization'
-    implementation 'io.quarkus:quarkus-oidc'
+    //implementation 'io.quarkus:quarkus-keycloak-authorization'
+    //implementation 'io.quarkus:quarkus-oidc'
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
     implementation 'io.quarkus:quarkus-jdbc-postgresql'
     implementation 'io.quarkiverse.mybatis:quarkus-mybatis:0.0.10'
+    implementation 'io.quarkus:quarkus-oidc:2.1.3.Final'
     implementation 'io.quarkus:quarkus-resteasy-jsonb'
     implementation 'io.quarkus:quarkus-resteasy'
     implementation 'io.quarkus:quarkus-smallrye-openapi'
-    implementation 'org.jsoup:jsoup:1.14.3'
-
+    //implementation 'org.jsoup:jsoup:1.14.3'
 }
 
 version = '1.0.0'

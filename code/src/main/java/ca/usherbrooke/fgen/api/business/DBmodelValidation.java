@@ -1,6 +1,6 @@
 package ca.usherbrooke.fgen.api.business;
 
-import java.sql.Time;
+import org.postgresql.util.PGInterval;
 
 public class DBmodelValidation {
     public String unit_id;

@@ -3,18 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ca.usherbrooke.fgen.api.persistence.ValidationMapper">
-    <insert id="insertHoraireEquipe">
+    <insert id="insertValidation">
         INSERT INTO extern_validation.validation(trimester_id,
                                                  department_id,
                                                  unit_id,
                                                  cipvalideur,
                                                  local,
                                                  dureeplagehoraire)
-        VALUES (#{validation.unit.trimester_id},
-                #{validation.unit.department_id},
-                #{validation.unit.unit_id},
-                #{validation.cipvalideur},
-                #{validation.local},
-                #{validation.dureeplagehoraire});
+        VALUES (#{trimester_id},
+                #{department_id},
+                #{unit_id},
+                #{cipvalideur},
+                #{local},
+                CAST(#{dureeplagehoraire} AS INTERVAL));
     </insert>
 </mapper>
