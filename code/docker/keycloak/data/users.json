@@ -1,0 +1,1770 @@
+
+{
+  "realm": "Validation",
+  "users": [
+    {
+      "username": "burt0701",
+      "enabled": true,
+      "firstName": "Thomas",
+      "lastName": "Bureau-Viens",
+      "email": "burt0701@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "juta1101",
+      "enabled": true,
+      "firstName": "Alexis",
+      "lastName": "Juteau",
+      "email": "juta1101@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "jous2601",
+      "enabled": true,
+      "firstName": "Simon",
+      "lastName": "Jourdenais",
+      "email": "jous2601@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "denj1202",
+      "enabled": true,
+      "firstName": "Jacob",
+      "lastName": "Deniss",
+      "email": "denj1202@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "form2341",
+      "enabled": true,
+      "firstName": "Marc-Etienne",
+      "lastName": "Fortier",
+      "email": "form2341@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "bure1301",
+      "enabled": true,
+      "firstName": "Emile",
+      "lastName": "Bureau",
+      "email": "bure1301@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "dugj0301",
+      "enabled": true,
+      "firstName": "Justin",
+      "lastName": "Duguay",
+      "email": "dugj0301@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "bouw2305",
+      "enabled": true,
+      "firstName": "William",
+      "lastName": "Bouchard",
+      "email": "bouw2305@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "robj1508",
+      "enabled": true,
+      "firstName": "Jérémi",
+      "lastName": "Robillard",
+      "email": "robj1508@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "rinf2601",
+      "enabled": true,
+      "firstName": "Finn",
+      "lastName": "Ringrose",
+      "email": "rinf2601@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "lesm1506",
+      "enabled": true,
+      "firstName": "Maxime",
+      "lastName": "Lescadre",
+      "email": "lesm1506@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "bral1301",
+      "enabled": true,
+      "firstName": "Louis-Nicolas",
+      "lastName": "Brault",
+      "email": "bral1301@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "pald2501",
+      "enabled": true,
+      "firstName": "Domingo",
+      "lastName": "Palao Munoz",
+      "email": "pald2501@usherbrooke.ca",
+      "realmRoles": [
+        "teacher",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "bruz0701",
+      "enabled": true,
+      "firstName": "Zachary",
+      "lastName": "Brunelle",
+      "email": "bruz0701@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "poue0801",
+      "enabled": true,
+      "firstName": "Émile",
+      "lastName": "Poulin",
+      "email": "poue0801@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "joll1702",
+      "enabled": true,
+      "firstName": "Loïc",
+      "lastName": "Jolicoeur-Pomerleau",
+      "email": "joll1702@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "math0701",
+      "enabled": true,
+      "firstName": "Hubert",
+      "lastName": "Mathieu",
+      "email": "math0701@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "bouc1623",
+      "enabled": true,
+      "firstName": "Chrystophe",
+      "lastName": "Boudreau",
+      "email": "bouc1623@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "labm1606",
+      "enabled": true,
+      "firstName": "Maxime",
+      "lastName": "Labbé",
+      "email": "labm1606@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "dube1805",
+      "enabled": true,
+      "firstName": "Élian-Jacob",
+      "lastName": "Dubuc",
+      "email": "dube1805@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "chat1002",
+      "enabled": true,
+      "firstName": "Thomas",
+      "lastName": "Charbonneau",
+      "email": "chat1002@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "genr1001",
+      "enabled": true,
+      "firstName": "Raphaël",
+      "lastName": "Genois",
+      "email": "genr1001@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "vacg3501",
+      "enabled": true,
+      "firstName": "Gabriel",
+      "lastName": "Vachon",
+      "email": "vacg3501@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "tare1401",
+      "enabled": true,
+      "firstName": "Émile",
+      "lastName": "Tardif",
+      "email": "tare1401@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "leby1902",
+      "enabled": true,
+      "firstName": "Yoan",
+      "lastName": "Leblond",
+      "email": "leby1902@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "doyf1501",
+      "enabled": true,
+      "firstName": "Félix",
+      "lastName": "Doyon",
+      "email": "doyf1501@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "roya2437",
+      "enabled": true,
+      "firstName": "Antoine",
+      "lastName": "Roy",
+      "email": "roya2437@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "lher0801",
+      "enabled": true,
+      "firstName": "Raphaël",
+      "lastName": "L'Heureux",
+      "email": "lher0801@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "majf0601",
+      "enabled": true,
+      "firstName": "François",
+      "lastName": "Major",
+      "email": "majf0601@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "trem1714",
+      "enabled": true,
+      "firstName": "Maéva",
+      "lastName": "Tremblay",
+      "email": "trem1714@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "jeae1101",
+      "enabled": true,
+      "firstName": "Emmanuel",
+      "lastName": "Jean",
+      "email": "jeae1101@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "foua2612",
+      "enabled": true,
+      "firstName": "Anthony",
+      "lastName": "Fournier-Francoeur",
+      "email": "foua2612@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "beae0601",
+      "enabled": true,
+      "firstName": "Étienne",
+      "lastName": "Beaulieu",
+      "email": "beae0601@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "viem2107",
+      "enabled": true,
+      "firstName": "Mathis",
+      "lastName": "Viégas",
+      "email": "viem2107@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "dufj2908",
+      "enabled": true,
+      "firstName": "Joël",
+      "lastName": "Dufault",
+      "email": "dufj2908@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "arcf1802",
+      "enabled": true,
+      "firstName": "François",
+      "lastName": "Archambault",
+      "email": "arcf1802@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "beab1802",
+      "enabled": true,
+      "firstName": "Bernard",
+      "lastName": "Beaulieu",
+      "email": "beab1802@usherbrooke.ca",
+      "realmRoles": [
+        "teacher",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "cosz1901",
+      "enabled": true,
+      "firstName": "Zachary",
+      "lastName": "Cossette",
+      "email": "cosz1901@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "gaud1401",
+      "enabled": true,
+      "firstName": "Daniel",
+      "lastName": "Gaucher",
+      "email": "gaud1401@usherbrooke.ca",
+      "realmRoles": [
+        "teacher",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "laco0901",
+      "enabled": true,
+      "firstName": "Olivier",
+      "lastName": "Lacoursière",
+      "email": "laco0901@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "cars1804",
+      "enabled": true,
+      "firstName": "Serge",
+      "lastName": "Caron",
+      "email": "cars1804@usherbrooke.ca",
+      "realmRoles": [
+        "teacher",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "riog1304",
+      "enabled": true,
+      "firstName": "Gabriel",
+      "lastName": "Rioux",
+      "email": "riog1304@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "maif1401",
+      "enabled": true,
+      "firstName": "Frédéric",
+      "lastName": "Mailhot",
+      "email": "maif1401@usherbrooke.ca",
+      "realmRoles": [
+        "teacher",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "carf2214",
+      "enabled": true,
+      "firstName": "Félix",
+      "lastName": "Carle-Milette",
+      "email": "carf2214@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "dorc1403",
+      "enabled": true,
+      "firstName": "Charles",
+      "lastName": "Dorion",
+      "email": "dorc1403@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "guej1304",
+      "enabled": true,
+      "firstName": "Jean-Philippe",
+      "lastName": "Guévin",
+      "email": "guej1304@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "kibd5171",
+      "enabled": true,
+      "firstName": "David Mihai",
+      "lastName": "Kibos",
+      "email": "kibd5171@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "pelf1504",
+      "enabled": true,
+      "firstName": "Francis",
+      "lastName": "Pelletier",
+      "email": "pelf1504@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "laus1801",
+      "enabled": true,
+      "firstName": "Sylvain",
+      "lastName": "Lauzier",
+      "email": "laus1801@usherbrooke.ca",
+      "realmRoles": [
+        "teacher",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "boua1007",
+      "enabled": true,
+      "firstName": "Alex",
+      "lastName": "Boulanger",
+      "email": "boua1007@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "tous0801",
+      "enabled": true,
+      "firstName": "Samuel",
+      "lastName": "Tourigny",
+      "email": "tous0801@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "jacg1303",
+      "enabled": true,
+      "firstName": "Gabriel",
+      "lastName": "Jacques",
+      "email": "jacg1303@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "focd2301",
+      "enabled": true,
+      "firstName": "David",
+      "lastName": "Fock-Chow-Tho",
+      "email": "focd2301@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "boul1104",
+      "enabled": true,
+      "firstName": "Loïc",
+      "lastName": "Bourassa",
+      "email": "boul1104@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "tres0801",
+      "enabled": true,
+      "firstName": "Samuel",
+      "lastName": "Trépanier",
+      "email": "tres0801@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "pepw3101",
+      "enabled": true,
+      "firstName": "William",
+      "lastName": "Pépin",
+      "email": "pepw3101@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "cang1102",
+      "enabled": true,
+      "firstName": "Gabriel",
+      "lastName": "Canuel",
+      "email": "cang1102@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "gauc1102",
+      "enabled": true,
+      "firstName": "Claude-David",
+      "lastName": "Gaudreault",
+      "email": "gauc1102@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "fala1703",
+      "enabled": true,
+      "firstName": "Alexandre",
+      "lastName": "Falardeau",
+      "email": "fala1703@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "mils2203",
+      "enabled": true,
+      "firstName": "Shawn",
+      "lastName": "Miller Morneau",
+      "email": "mils2203@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "bare2505",
+      "enabled": true,
+      "firstName": "Edouard",
+      "lastName": "Barrimo",
+      "email": "bare2505@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "farg2101",
+      "enabled": true,
+      "firstName": "Ghania",
+      "lastName": "Farhi",
+      "email": "farg2101@usherbrooke.ca",
+      "realmRoles": [
+        "teacher",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "berj1005",
+      "enabled": true,
+      "firstName": "Julien",
+      "lastName": "Bernard",
+      "email": "berj1005@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "khim2701",
+      "enabled": true,
+      "firstName": "Mirza",
+      "lastName": "Khimjee",
+      "email": "khim2701@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "marp0501",
+      "enabled": true,
+      "firstName": "Pierre-Luc",
+      "lastName": "Marcotte",
+      "email": "marp0501@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "houj1308",
+      "enabled": true,
+      "firstName": "Justin",
+      "lastName": "Houde",
+      "email": "houj1308@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "hani1401",
+      "enabled": true,
+      "firstName": "Isabelle",
+      "lastName": "Handfield",
+      "email": "hani1401@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "dubj0904",
+      "enabled": true,
+      "firstName": "Jérémy",
+      "lastName": "Dubé",
+      "email": "dubj0904@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "boue1001",
+      "enabled": true,
+      "firstName": "Emile",
+      "lastName": "Boutin",
+      "email": "boue1001@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "finj1402",
+      "enabled": true,
+      "firstName": "Joseph",
+      "lastName": "Finan",
+      "email": "finj1402@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "race2901",
+      "enabled": true,
+      "firstName": "Edouard-Laurence",
+      "lastName": "Racicot",
+      "email": "race2901@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "geof1501",
+      "enabled": true,
+      "firstName": "Frédéric",
+      "lastName": "Geoffroy",
+      "email": "geof1501@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "belj1102",
+      "enabled": true,
+      "firstName": "Justin",
+      "lastName": "Bélanger",
+      "email": "belj1102@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "lavn0601",
+      "enabled": true,
+      "firstName": "Nicolas",
+      "lastName": "Lavoie",
+      "email": "lavn0601@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "dubf1002",
+      "enabled": true,
+      "firstName": "Félix-Antoine",
+      "lastName": "Dubé",
+      "email": "dubf1002@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "heba0801",
+      "enabled": true,
+      "firstName": "Antoine",
+      "lastName": "Hébert",
+      "email": "heba0801@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "giff1201",
+      "enabled": true,
+      "firstName": "Félix",
+      "lastName": "Giffard",
+      "email": "giff1201@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "thil0601",
+      "enabled": true,
+      "firstName": "Luka",
+      "lastName": "Thivierge",
+      "email": "thil0601@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "becm1401",
+      "enabled": true,
+      "firstName": "Marylin",
+      "lastName": "Bechara",
+      "email": "becm1401@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "cotj3307",
+      "enabled": true,
+      "firstName": "Jordan",
+      "lastName": "Cote",
+      "email": "cotj3307@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "cotc1105",
+      "enabled": true,
+      "firstName": "Charles-Étienne",
+      "lastName": "Côté",
+      "email": "cotc1105@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "dufd2802",
+      "enabled": true,
+      "firstName": "Denis",
+      "lastName": "Dufresne",
+      "email": "dufd2802@usherbrooke.ca",
+      "realmRoles": [
+        "teacher",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "cyrm2101",
+      "enabled": true,
+      "firstName": "Marc-André",
+      "lastName": "Cyr",
+      "email": "cyrm2101@usherbrooke.ca",
+      "realmRoles": [
+        "teacher",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "leqf2501",
+      "enabled": true,
+      "firstName": "Félix",
+      "lastName": "Lequin",
+      "email": "leqf2501@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "houa2209",
+      "enabled": true,
+      "firstName": "Annabelle",
+      "lastName": "Houle",
+      "email": "houa2209@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "gaga5241",
+      "enabled": true,
+      "firstName": "Amélie",
+      "lastName": "Gagnon",
+      "email": "gaga5241@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "lara1811",
+      "enabled": true,
+      "firstName": "Alexandre",
+      "lastName": "Larose",
+      "email": "lara1811@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "boum3643",
+      "enabled": true,
+      "firstName": "Mickel",
+      "lastName": "Bourgouin",
+      "email": "boum3643@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "buss0901",
+      "enabled": true,
+      "firstName": "Sebastian",
+      "lastName": "Bustamante",
+      "email": "buss0901@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "boua2511",
+      "enabled": true,
+      "firstName": "Audrey",
+      "lastName": "Boucher-Genesse",
+      "email": "boua2511@usherbrooke.ca",
+      "realmRoles": [
+        "teacher",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "vais1402",
+      "enabled": true,
+      "firstName": "Simon",
+      "lastName": "Vaillancourt",
+      "email": "vais1402@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "puic2701",
+      "enabled": true,
+      "firstName": "Chantal",
+      "lastName": "Puig",
+      "email": "puic2701@usherbrooke.ca",
+      "realmRoles": [
+        "teacher",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "laja1501",
+      "enabled": true,
+      "firstName": "Alex",
+      "lastName": "Lajeunesse",
+      "email": "laja1501@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "gaum1309",
+      "enabled": true,
+      "firstName": "Marianne",
+      "lastName": "Gaudet",
+      "email": "gaum1309@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "foro2307",
+      "enabled": true,
+      "firstName": "Olivier",
+      "lastName": "Fortier",
+      "email": "foro2307@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "haml1303",
+      "enabled": true,
+      "firstName": "Laurent",
+      "lastName": "Hamel",
+      "email": "haml1303@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "letn1102",
+      "enabled": true,
+      "firstName": "Nathaniel",
+      "lastName": "Létourneau",
+      "email": "letn1102@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
+    {
+      "username": "bela2541",
+      "enabled": true,
+      "firstName": "Alexandre",
+      "lastName": "Belleau",
+      "email": "bela2541@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-master"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    }
+  ]
+}

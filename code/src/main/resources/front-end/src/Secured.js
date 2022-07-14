@@ -7,7 +7,9 @@ class Secured extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { keycloak: null, authenticated: false};
+		this.state = { keycloak: null, authenticated: false, name: "",
+			email: "",
+			id: ""};
 	}
 
 	componentDidMount() {
@@ -16,6 +18,12 @@ class Secured extends Component {
 			this.setState({keycloak: keycloak, authenticated: authenticated})
 			if (authenticated) {
 				window.accessToken = keycloak.token;
+				keycloak.loadUserProfile()
+					.then(function(profile) {
+						window.username = profile.username;
+					}).catch(function() {
+					alert('Failed to load user profile');
+				});
 			}
 		})
 	}
