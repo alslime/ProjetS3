@@ -266,7 +266,13 @@ INSERT INTO extern_validation.validation(trimester_id,department_id,unit_id,cipv
     VALUES ('E22',1808,'s6eapp1','houj1308','C1-3021','0:45:0');
 
 INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
-    VALUES ('E22',1808,'s6eapp1','houj1308',1,2,'4:30:00');
+    VALUES ('E22',1808,'s6eapp1','houj1308',1,1,'4:30:00');
+INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
+VALUES ('E22',1808,'s6eapp1','houj1308',1,2,'4:30:00');
+INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
+VALUES ('E22',1808,'s6eapp1','houj1308',1,3,'4:30:00');
+INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
+VALUES ('E22',1808,'s6eapp1','houj1308',1,4,'4:30:00');
 
 UPDATE extern_validation.validation
 SET local = 'C1-5119',
