@@ -1,8 +1,0 @@
-docker-compose  down;docker-compose up -d
-docker container ls
-docker logs keycloak -f
-docker exec -it  keycloak "/bin/bash"
-   tail -f /opt/jboss/keycloak/standalone/log/server.log
-
-
- npx webpack build

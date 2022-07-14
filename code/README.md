@@ -10,4 +10,9 @@ Projet des Barres tendres
 6) localhost:8180 pour set keycloak
 7) Ca devrait marcher normalement
 
+### services a faire :
+1) bouton terminer une valide
+2) inserer equipe valide
+
+
 
