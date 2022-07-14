@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #while true; do echo hello && sleep 5; done;
 
 timeout 300 /bin/bash -c 'until curl -sI -o /dev/null -w "%{http_code}\n" localhost:8080; do sleep 5; done;'
