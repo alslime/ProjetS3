@@ -17,21 +17,6 @@
       <option name="url" value="https://repo.maven.apache.org/maven2/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="GitLab" />
-      <option name="name" value="GitLab" />
-      <option name="url" value="https://gitlab.gegi.usherbrooke.ca/api/v4/projects/261/packages/maven" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="BintrayJCenter" />
-      <option name="name" value="BintrayJCenter" />
-      <option name="url" value="https://jcenter.bintray.com/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="MavenLocal" />
-      <option name="name" value="MavenLocal" />
-      <option name="url" value="file:$MAVEN_REPOSITORY$/" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="MavenLocal" />
       <option name="name" value="MavenLocal" />
       <option name="url" value="file:/$MAVEN_REPOSITORY$/" />

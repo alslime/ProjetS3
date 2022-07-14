@@ -370,6 +370,7 @@
       "email": "chat1002@usherbrooke.ca",
       "realmRoles": [
         "student",
+        "default-roles-validation",
         "default-roles-master"
       ],
       "credentials": [

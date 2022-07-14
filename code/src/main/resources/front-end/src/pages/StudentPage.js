@@ -24,7 +24,7 @@ function StudentPage(){
 				};
 				validation.push(HoraireEquipes);
 			}
-			const validInfo = {
+			var validInfo = {
 				local: data[0].validation.local,
 				duree: data[0].validation.dureeplagehoraire,
 				retard: data[0].validation.retard
