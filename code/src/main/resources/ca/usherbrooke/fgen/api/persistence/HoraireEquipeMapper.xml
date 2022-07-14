@@ -4,7 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ca.usherbrooke.fgen.api.persistence.HoraireEquipeMapper">
     <select id="allHorairesEquipe" resultMap="mapDBModelHoraireEquipe">
-        SELECT * FROM extern_validation.horaireequipe;
+        SELECT * FROM extern_validation.horaireequipe
+        WHERE unit_id = #{unit_id} and
+              department_id = #{department_id} and
+              trimester_id = #{trimester_id} and
+              cipvalideur = #{cipvalideur};
     </select>
 
     <resultMap id="mapDBModelHoraireEquipe" type="ca.usherbrooke.fgen.api.business.DBmodelHoraireEquipe">
@@ -35,12 +39,12 @@
     <update id="finirHoraireEquipe">
         UPDATE extern_validation.horaireEquipe
         SET estterminee = TRUE
-        WHERE trimester_id = #{HE.validation.unit.trimester_id}
-          AND department_id = #{HE.validation.unit.department_id}
-          AND unit_id = #{HE.validation.unit.unit_id}
-          AND cipvalideur = #{HE.validation.cipvalideur}
-          AND no = #{HE.equipe.no}
-          AND grouping = #{HE.equipe.grouping};
+        WHERE trimester_id = #{trimester_id}
+          AND department_id = #{department_id}
+          AND unit_id = #{unit_id}
+          AND cipvalideur = #{cipvalideur}
+          AND no = #{no}
+          AND grouping = #{grouping};
     </update>
 
 </mapper>

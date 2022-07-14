@@ -1,9 +1,7 @@
 package ca.usherbrooke.fgen.api.service;
 
 import ca.usherbrooke.fgen.api.business.*;
-import ca.usherbrooke.fgen.api.persistence.HoraireEquipeConvert;
 import ca.usherbrooke.fgen.api.persistence.HoraireEquipeMapper;
-import io.quarkus.security.Authenticated;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -21,12 +19,16 @@ public class HoraireEquipeService {
     private static final Logger LOG = Logger.getLogger(String.valueOf(HoraireEquipeService.class));
 
     @GET
-    @Path("getAllHorairesEquipe")
+    @Path("getAllHorairesEquipe/{unit_id}/{department_id}/{trimester_id}/{cipvalideur}")
     public List<HoraireEquipe> getAllHorairesEquipe(
+            @PathParam("unit_id") String unit_id,
+            @PathParam("department_id") String department_id,
+            @PathParam("trimester_id") String trimester_id,
+            @PathParam("cipvalideur") String cipvalideur
     ) {
         LOG.info("getAllHorairesEquipe");
         List<HoraireEquipe> listeHE = new ArrayList<HoraireEquipe>();
-        List<DBmodelHoraireEquipe> listeHEM = this.horaireEquipeMapper.allHorairesEquipe();
+        List<DBmodelHoraireEquipe> listeHEM = this.horaireEquipeMapper.allHorairesEquipe(unit_id,department_id,trimester_id,cipvalideur);
 
         //map HoraireEquipe from DBmodelHoraireEquipe
         for (DBmodelHoraireEquipe obj : listeHEM) {
@@ -61,10 +63,17 @@ public class HoraireEquipeService {
 //    public void insertHoraireEquipe(HoraireEquipe HE) {
 //        horaireEquipeMapper.insertHoraireEquipe(HE);
 //    }
-//
-//    @PUT
-//    @Path("finirHoraireEquipe")
-//    public void finirHoraireEquipe(HoraireEquipe HE) {
-//        horaireEquipeMapper.finirHoraireEquipe(HE);
-//    }
+
+    @PUT
+    @Path("finirHoraireEquipe/{no}/{unit_id}/{department_id}/{trimester_id}/{cipvalideur}/{grouping}")
+    public void finirHoraireEquipe(
+            @PathParam("no") Integer no,
+            @PathParam("unit_id") String unit_id,
+            @PathParam("department_id") String department_id,
+            @PathParam("trimester_id") String trimester_id,
+            @PathParam("cipvalideur") String cipvalideur,
+            @PathParam("grouping") Integer grouping
+    ) {
+        horaireEquipeMapper.finirHoraireEquipe(no,unit_id,department_id,trimester_id,cipvalideur,grouping);
+    }
 }

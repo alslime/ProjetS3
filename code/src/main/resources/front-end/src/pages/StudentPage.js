@@ -10,7 +10,7 @@ function StudentPage(){
 	useEffect(() => {
 		setLoading(true);
 		fetch(
-			'http://localhost:8089/api/getAllHorairesEquipe'
+			'http://localhost:8089/api/getAllHorairesEquipe/s6eapp1/1808/E22/houj1308'
 		).then(response => {
 			return response.json();
 		}).then(data => {

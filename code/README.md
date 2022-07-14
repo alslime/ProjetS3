@@ -11,7 +11,6 @@ Projet des Barres tendres
 7) Ca devrait marcher normalement
 
 ### services a faire :
-1) bouton terminer une valide
 2) inserer equipe valide
 
 

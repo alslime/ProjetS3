@@ -10,7 +10,7 @@ function TeacherPage(){
 	useEffect(() => {
 		setLoading(true);
 		fetch(
-			'http://localhost:8089/api/getAllHorairesEquipe'
+			'http://localhost:8089/api/getAllHorairesEquipe/s6eapp1/1808/E22/houj1308'
 		).then(response => {
 			return response.json();
 		}).then(data => {
@@ -63,11 +63,21 @@ function TeacherPage(){
 		)
 	}
 
+	function finirEquipe() {
+		fetch(
+			'http://localhost:8089/api/finirHoraireEquipe/2/s6eapp1/1808/E22/houj1308/1', {
+				method: "PUT"
+			}).then(response => {
+			return response.json();
+		})
+	}
+
 	return(
 		<div>
 			<h1 className={"title"}>Page des professeurs</h1>
 			<Validation validation={loadedValidation} infoValidation={loadedInfoValidation}/>
 			<button className={"bouton"} onClick={createValid}> Create Validation </button>
+			<button className={"bouton"} onClick={finirEquipe}> Finir Equipe </button>
 		</div>
 	);
 }
