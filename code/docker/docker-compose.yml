@@ -6,8 +6,7 @@ services:
    ports:
      - 8180:8080
    volumes:
-     - ./keycloak_data:/opt/jboss/keycloak/standalone/data/
-     - ./keycloak/utils:/var/tmp
+     - ./keycloak/data:/var/tmp
      - ./keycloak/startup-scripts/init.sh:/docker-entrypoint-sh/init.sh
    entrypoint: sh -c "/docker-entrypoint-sh/init.sh"
    environment:
