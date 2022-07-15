@@ -131,7 +131,7 @@ GROUP BY schema_groupe.equipe.no, schema_groupe.horaireequipe.hpassageprevue,
          schema_groupe.validation.retard;
 
 CREATE OR REPLACE VIEW extern_validation.validation AS
-SELECT schema_groupe.unit.unit_id,
+SELECT DISTINCT schema_groupe.unit.unit_id,
        schema_groupe.unit.department_id,
        schema_groupe.unit.trimester_id,
        schema_groupe.validation.cipValideur,
