@@ -51,6 +51,7 @@ public class HoraireEquipeService {
 
             HoraireEquipe HE = new HoraireEquipe();
             HE.hpassageprevue = obj.hpassageprevue;
+            HE.estterminee = obj.estterminee;
             HE.validation = valid;
             HE.equipe = eq;
             listeHE.add(HE);
@@ -65,15 +66,16 @@ public class HoraireEquipeService {
 //    }
 
     @PUT
-    @Path("finirHoraireEquipe/{no}/{unit_id}/{department_id}/{trimester_id}/{cipvalideur}/{grouping}")
+    @Path("finirHoraireEquipe/{no}/{unit_id}/{department_id}/{trimester_id}/{cipvalideur}/{grouping}/{estterminee}")
     public void finirHoraireEquipe(
             @PathParam("no") Integer no,
             @PathParam("unit_id") String unit_id,
             @PathParam("department_id") String department_id,
             @PathParam("trimester_id") String trimester_id,
             @PathParam("cipvalideur") String cipvalideur,
-            @PathParam("grouping") Integer grouping
+            @PathParam("grouping") Integer grouping,
+            @PathParam("estterminee") Boolean estterminee
     ) {
-        horaireEquipeMapper.finirHoraireEquipe(no,unit_id,department_id,trimester_id,cipvalideur,grouping);
+        horaireEquipeMapper.finirHoraireEquipe(no,unit_id,department_id,trimester_id,cipvalideur,grouping,estterminee);
     }
 }

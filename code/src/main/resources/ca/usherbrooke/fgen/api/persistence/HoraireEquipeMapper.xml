@@ -38,7 +38,7 @@
 
     <update id="finirHoraireEquipe">
         UPDATE extern_validation.horaireEquipe
-        SET estterminee = TRUE
+        SET estterminee = #{estterminee}
         WHERE trimester_id = #{trimester_id}
           AND department_id = #{department_id}
           AND unit_id = #{unit_id}

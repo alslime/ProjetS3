@@ -10,19 +10,31 @@ function TeacherPage(){
 
 	useEffect(() => {
 		setLoading(true);
+		window.numberOfEquipe = 0;
+		window.currentEquipe = 1;
 		fetch(
-			'http://localhost:8089/api/getAllHorairesEquipe/s6eapp1/1808/E22/houj1308'
+			"http://localhost:8089/api/getAllHorairesEquipe/" +
+			window.unit_id + "/" +
+			window.department_id + "/" +
+			window.trimester_id + "/" +
+			window.username
 		).then(response => {
 			return response.json();
 		}).then(data => {
 			const validation = [];
 			for (const key in data){
+				window.numberOfEquipe += 1;
 				const HoraireEquipes = {
 					numero: data[key].equipe.no,
 					equipiers: data[key].equipe.membres,
 					horaire: data[key].hpassageprevue,
-					heureAjustee: data[key].hpassageprevue
+					heureAjustee: data[key].hpassageprevue,
+					fini: data[key].estterminee,
+					grpng: data[key].equipe.grouping
 				};
+				if (HoraireEquipes.fini === true){
+					window.currentEquipe += 1;
+				}
 				validation.push(HoraireEquipes);
 			}
 			const validInfo = {
@@ -45,10 +57,10 @@ function TeacherPage(){
 	function createValid(time) {
 		window.alert(time);
 		let _data = {
-			trimester_id:"E22",
-			department_id:"1808",
-			unit_id:"s6eapp1",
-			cipvalideur:"abia2601",
+			trimester_id:window.trimester_id,
+			department_id:window.department_id,
+			unit_id:window.unit_id,
+			cipvalideur:window.username,
 			local:"C1-1234",
 			dureeplagehoraire:"0 years 0 mons 0 days 0 hours " + time + " mins 0.0 secs"
 		}
@@ -66,19 +78,49 @@ function TeacherPage(){
 		)
 	}
 
-	function finirEquipe() {
+	function prochaineEquipe() {
 		fetch(
-			'http://localhost:8089/api/finirHoraireEquipe/2/s6eapp1/1808/E22/houj1308/1', {
+			"http://localhost:8089/api/finirHoraireEquipe/" +
+			loadedValidation.at(window.currentEquipe-1).numero + "/" +
+			window.unit_id + "/" +
+			window.department_id + "/" +
+			window.trimester_id + "/" +
+			window.username + "/" +
+			loadedValidation.at(window.currentEquipe-1).grpng +
+			"/true", {
 				method: "PUT"
 			}).then(response => {
 			return response.json();
 		})
+		if (window.currentEquipe < window.numberOfEquipe-1){
+			window.currentEquipe += 1;
+		}
+	}
+
+	function equipePrecedente() {
+		fetch(
+			"http://localhost:8089/api/finirHoraireEquipe/" +
+			loadedValidation.at(window.currentEquipe-1).numero + "/" +
+			window.unit_id + "/" +
+			window.department_id + "/" +
+			window.trimester_id + "/" +
+			window.username + "/" +
+			loadedValidation.at(window.currentEquipe-1).grpng +
+			"/false", {
+				method: "PUT"
+			}).then(response => {
+			return response.json();
+		})
+		if (window.currentEquipe > 2){
+			window.currentEquipe -= 1;
+		}
 	}
 
 	return(
 		<div>
 			<h1 className={"title"}>Page des professeurs</h1>
 			<Validation validation={loadedValidation} infoValidation={loadedInfoValidation}/>
+			<button className={"bouton"} onClick={prochaineEquipe}>Prochaine Equipe</button>
 
 			<table>
 				<tr>

@@ -18,6 +18,7 @@ function Validation(props){
 						equipiers={horaireEquipe.equipiers}
 						horaire={horaireEquipe.horaire}
 						heureAjustee={horaireEquipe.heureAjustee}
+						fini={horaireEquipe.fini}
 					/>
 				))}
 			</table>

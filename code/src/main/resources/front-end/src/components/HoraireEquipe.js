@@ -1,6 +1,7 @@
 function HoraireEquipe(props){
 	return(
-		<tr>
+		// eslint-disable-next-line no-template-curly-in-string
+		<tr className={props.fini ? "finished" : "notFinished"}>
 			<td>{props.numero}</td>
 			<td>{props.equipiers}</td>
 			<td>{props.horaire}</td>

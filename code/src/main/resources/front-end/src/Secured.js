@@ -4,7 +4,6 @@ import App from "./App";
 import {BrowserRouter} from "react-router-dom";
 
 class Secured extends Component {
-
 	constructor(props) {
 		super(props);
 		this.state = { keycloak: null, authenticated: false, name: "",
@@ -24,6 +23,23 @@ class Secured extends Component {
 					}).catch(function() {
 					alert('Failed to load user profile');
 				});
+				window.username = 'houj1308';
+				//Make trimester_id String
+				var year = new Date();
+				year = year.getFullYear().toString().substring(2,4);
+				window.trimester_id = '';
+				var month = new Date();
+				month = month.getMonth()+1;
+				if (month+1 < 5){
+					window.trimester_id = 'H'
+				}else if (month+1 < 9){
+					window.trimester_id = 'E'
+				}else{
+					window.trimester_id = 'A'
+				}
+				window.trimester_id = window.trimester_id.concat(year.toString());
+				window.department_id = '1808';
+				window.unit_id = 's6eapp1';
 			}
 		})
 	}

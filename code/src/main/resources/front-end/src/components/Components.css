@@ -7,9 +7,11 @@
     width: 100%;
 }
 
+tr.notFinished{
+    background-color: white;
+}
 
-
-td{
+tr.finished {
     background-color: lightgray;
 }
 

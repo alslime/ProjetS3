@@ -18,6 +18,7 @@ public interface HoraireEquipeMapper {
                             @Param("department_id") String department_id,
                             @Param("trimester_id") String trimester_id,
                             @Param("cipvalideur") String cipvalideur,
-                            @Param("grouping") Integer grouping);
+                            @Param("grouping") Integer grouping,
+                            @Param("estterminee") Boolean estterminee);
 }
 
