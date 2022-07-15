@@ -10,7 +10,7 @@
       "email": "burt0701@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -28,7 +28,7 @@
       "email": "juta1101@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -46,7 +46,7 @@
       "email": "jous2601@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -64,7 +64,7 @@
       "email": "denj1202@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -82,7 +82,7 @@
       "email": "form2341@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -100,7 +100,7 @@
       "email": "bure1301@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -118,7 +118,7 @@
       "email": "dugj0301@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -136,7 +136,7 @@
       "email": "bouw2305@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -154,7 +154,7 @@
       "email": "robj1508@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -172,7 +172,7 @@
       "email": "rinf2601@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -190,7 +190,7 @@
       "email": "lesm1506@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -208,7 +208,7 @@
       "email": "bral1301@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -226,7 +226,7 @@
       "email": "pald2501@usherbrooke.ca",
       "realmRoles": [
         "teacher",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -244,7 +244,7 @@
       "email": "bruz0701@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -262,7 +262,7 @@
       "email": "poue0801@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -280,7 +280,7 @@
       "email": "joll1702@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -298,7 +298,7 @@
       "email": "math0701@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -316,7 +316,7 @@
       "email": "bouc1623@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -334,7 +334,7 @@
       "email": "labm1606@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -352,7 +352,7 @@
       "email": "dube1805@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -370,7 +370,7 @@
       "email": "chat1002@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -388,7 +388,7 @@
       "email": "genr1001@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -406,7 +406,7 @@
       "email": "vacg3501@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -424,7 +424,7 @@
       "email": "tare1401@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -442,7 +442,7 @@
       "email": "leby1902@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -460,7 +460,7 @@
       "email": "doyf1501@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -478,7 +478,7 @@
       "email": "roya2437@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -496,7 +496,7 @@
       "email": "lher0801@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -514,7 +514,7 @@
       "email": "majf0601@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -532,7 +532,7 @@
       "email": "trem1714@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -550,7 +550,7 @@
       "email": "jeae1101@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -568,7 +568,7 @@
       "email": "foua2612@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -586,7 +586,7 @@
       "email": "beae0601@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -604,7 +604,7 @@
       "email": "viem2107@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -622,7 +622,7 @@
       "email": "dufj2908@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -640,7 +640,7 @@
       "email": "arcf1802@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -658,7 +658,7 @@
       "email": "beab1802@usherbrooke.ca",
       "realmRoles": [
         "teacher",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -676,7 +676,7 @@
       "email": "cosz1901@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -694,7 +694,7 @@
       "email": "gaud1401@usherbrooke.ca",
       "realmRoles": [
         "teacher",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -712,7 +712,7 @@
       "email": "laco0901@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -730,7 +730,7 @@
       "email": "cars1804@usherbrooke.ca",
       "realmRoles": [
         "teacher",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -748,7 +748,7 @@
       "email": "riog1304@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -766,7 +766,7 @@
       "email": "maif1401@usherbrooke.ca",
       "realmRoles": [
         "teacher",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -784,7 +784,7 @@
       "email": "carf2214@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -802,7 +802,7 @@
       "email": "dorc1403@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -820,7 +820,7 @@
       "email": "guej1304@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -838,7 +838,7 @@
       "email": "kibd5171@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -856,7 +856,7 @@
       "email": "pelf1504@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -874,7 +874,7 @@
       "email": "laus1801@usherbrooke.ca",
       "realmRoles": [
         "teacher",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -892,7 +892,7 @@
       "email": "boua1007@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -910,7 +910,7 @@
       "email": "tous0801@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -928,7 +928,7 @@
       "email": "jacg1303@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -946,7 +946,7 @@
       "email": "focd2301@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -964,7 +964,7 @@
       "email": "boul1104@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -982,7 +982,7 @@
       "email": "tres0801@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1000,7 +1000,7 @@
       "email": "pepw3101@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1018,7 +1018,7 @@
       "email": "cang1102@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1036,7 +1036,7 @@
       "email": "gauc1102@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1054,7 +1054,7 @@
       "email": "fala1703@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1072,7 +1072,7 @@
       "email": "mils2203@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1090,7 +1090,7 @@
       "email": "bare2505@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1108,7 +1108,7 @@
       "email": "farg2101@usherbrooke.ca",
       "realmRoles": [
         "teacher",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1126,7 +1126,7 @@
       "email": "berj1005@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1144,7 +1144,7 @@
       "email": "khim2701@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1162,7 +1162,7 @@
       "email": "marp0501@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1180,7 +1180,7 @@
       "email": "houj1308@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1198,7 +1198,7 @@
       "email": "hani1401@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1216,7 +1216,7 @@
       "email": "dubj0904@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1234,7 +1234,7 @@
       "email": "boue1001@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1252,7 +1252,7 @@
       "email": "finj1402@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1270,7 +1270,7 @@
       "email": "race2901@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1288,7 +1288,7 @@
       "email": "geof1501@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1306,7 +1306,7 @@
       "email": "belj1102@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1324,7 +1324,7 @@
       "email": "lavn0601@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1342,7 +1342,7 @@
       "email": "dubf1002@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1360,7 +1360,7 @@
       "email": "heba0801@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1378,7 +1378,7 @@
       "email": "giff1201@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1396,7 +1396,7 @@
       "email": "thil0601@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1414,7 +1414,7 @@
       "email": "becm1401@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1432,7 +1432,7 @@
       "email": "cotj3307@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1450,7 +1450,7 @@
       "email": "cotc1105@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1468,7 +1468,7 @@
       "email": "dufd2802@usherbrooke.ca",
       "realmRoles": [
         "teacher",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1486,7 +1486,7 @@
       "email": "cyrm2101@usherbrooke.ca",
       "realmRoles": [
         "teacher",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1504,7 +1504,7 @@
       "email": "leqf2501@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1522,7 +1522,7 @@
       "email": "houa2209@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1540,7 +1540,7 @@
       "email": "gaga5241@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1558,7 +1558,7 @@
       "email": "lara1811@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1576,7 +1576,7 @@
       "email": "boum3643@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1594,7 +1594,7 @@
       "email": "buss0901@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1612,7 +1612,7 @@
       "email": "boua2511@usherbrooke.ca",
       "realmRoles": [
         "teacher",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1630,7 +1630,7 @@
       "email": "vais1402@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1648,7 +1648,7 @@
       "email": "puic2701@usherbrooke.ca",
       "realmRoles": [
         "teacher",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1666,7 +1666,7 @@
       "email": "laja1501@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1684,7 +1684,7 @@
       "email": "gaum1309@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1702,7 +1702,7 @@
       "email": "foro2307@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1720,7 +1720,7 @@
       "email": "haml1303@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1738,7 +1738,7 @@
       "email": "letn1102@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
@@ -1756,7 +1756,7 @@
       "email": "bela2541@usherbrooke.ca",
       "realmRoles": [
         "student",
-        "default-roles-master"
+        "default-roles-validation"
       ],
       "credentials": [
         {
