@@ -6,6 +6,7 @@ function TeacherPage(){
 	const [isLoading, setLoading] = useState(true);
 	const [loadedValidation, setLoadedValidation] = useState([]);
 	const [loadedInfoValidation, setLoadedInfoValidation] = useState(null);
+	//let time = TeacherPage.getElementById('dureeInput').value;
 
 	useEffect(() => {
 		setLoading(true);
@@ -41,15 +42,17 @@ function TeacherPage(){
 		);
 	}
 
-	function createValid() {
+	function createValid(time) {
+		window.alert(time);
 		let _data = {
 			trimester_id:"E22",
 			department_id:"1808",
 			unit_id:"s6eapp1",
 			cipvalideur:"abia2601",
 			local:"C1-1234",
-			dureeplagehoraire:"0 years 0 mons 0 days 0 hours 45 mins 0.0 secs"
+			dureeplagehoraire:"0 years 0 mons 0 days 0 hours " + time + " mins 0.0 secs"
 		}
+
 		fetch(
 			'http://localhost:8089/api/insertValidation', {
 				method: "PUT",
@@ -76,8 +79,15 @@ function TeacherPage(){
 		<div>
 			<h1 className={"title"}>Page des professeurs</h1>
 			<Validation validation={loadedValidation} infoValidation={loadedInfoValidation}/>
-			<button className={"bouton"} onClick={createValid}> Create Validation </button>
-			<button className={"bouton"} onClick={finirEquipe}> Finir Equipe </button>
+
+			<table>
+				<tr>
+					<th>Durée : <input className={"duree"} type={"number"} placeholder={"minutes"} id={"dureeInput"}/></th>
+					<th><button className={"bouton"}  onClick={() => createValid(document.getElementById("dureeInput").value)}> Create Validation </button></th>
+					<th><button className={"bouton"} onClick={finirEquipe}> Finir Equipe </button></th>
+				</tr>
+
+			</table>
 		</div>
 	);
 }
