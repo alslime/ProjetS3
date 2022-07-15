@@ -45,8 +45,8 @@ function TeacherPage(){
 			}
 			setLoadedValidation(validation);
 			setLoadedInfoValidation(validInfo);
+			setLoading(false);
 		});
-		setLoading(false);
 	}, []);
 
 	if (isLoading){

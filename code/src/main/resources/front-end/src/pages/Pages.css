@@ -9,3 +9,13 @@
     font-size: 20px;
     font-weight: bold;
 }
+
+.table, tr, th{
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.duree{
+
+}
