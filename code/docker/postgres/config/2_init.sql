@@ -142,6 +142,15 @@ From ((schema_groupe.validation
     LEFT JOIN schema_groupe.horaireequipe ON validation.serial_unit_id = horaireequipe.serial_unit_id and validation.cipvalideur = horaireequipe.cipvalideur)
     INNER JOIN schema_groupe.unit ON validation.serial_unit_id = unit.serial_unit_id);
 
+CREATE OR REPLACE VIEW extern_validation.equipe_unit AS
+SELECT schema_groupe.equipe.no,
+       schema_groupe.unit.department_id,
+       schema_groupe.unit.trimester_id,
+       schema_groupe.unit.unit_id,
+       schema_groupe.equipe.grouping
+FROM schema_groupe.equipe,
+     schema_groupe.unit
+WHERE schema_groupe.equipe.serial_unit_id = schema_groupe.unit.serial_unit_id;
 
 --**********************************************************
 --Create triggers
@@ -262,33 +271,45 @@ CREATE TRIGGER update_validation
 --**********************************************************
 --TESTS
 --**********************************************************
-INSERT INTO extern_validation.validation(trimester_id,department_id,unit_id,cipvalideur,local,dureeplagehoraire)
-    VALUES ('E22',1808,'s6eapp1','houj1308','C1-3021','0:45:0');
+-- INSERT INTO extern_validation.validation(trimester_id,department_id,unit_id,cipvalideur,local,dureeplagehoraire)
+--     VALUES ('E22',1808,'s6eapp1','houj1308','C1-3021','0:45:0');
+--
+-- INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
+--     VALUES ('E22',1808,'s6eapp1','houj1308',1,1,'4:30:00');
+-- INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
+-- VALUES ('E22',1808,'s6eapp1','houj1308',1,2,'4:30:00');
+-- INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
+-- VALUES ('E22',1808,'s6eapp1','houj1308',1,3,'4:30:00');
+-- INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
+-- VALUES ('E22',1808,'s6eapp1','houj1308',1,4,'4:30:00');
+--
+-- INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
+-- SELECT DISTINCT validation.trimester_id,validation.department_id,validation.unit_id,cipvalideur,grouping,no,CAST('4:30:00' as interval)
+-- FROM extern_validation.equipe_unit, extern_validation.validation
+-- WHERE validation.trimester_id = 'E22' AND equipe_unit.trimester_id = validation.trimester_id AND
+--       validation.department_id = '1808' AND equipe_unit.department_id = validation.department_id AND
+--       validation.unit_id = 's6eapp1' AND equipe_unit.unit_id = validation.unit_id AND
+--       NOT EXISTS(SELECT * FROM extern_validation.horaireEquipe WHERE validation.department_id = horaireequipe.department_id AND
+--                                                                      validation.trimester_id = horaireequipe.trimester_id AND
+--                                                                      validation.unit_id = horaireequipe.unit_id AND
+--                                                                      equipe_unit.no = horaireequipe.no AND
+--                                                                      equipe_unit.grouping = horaireequipe.grouping);
 
-INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
-    VALUES ('E22',1808,'s6eapp1','houj1308',1,1,'4:30:00');
-INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
-VALUES ('E22',1808,'s6eapp1','houj1308',1,2,'4:30:00');
-INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
-VALUES ('E22',1808,'s6eapp1','houj1308',1,3,'4:30:00');
-INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
-VALUES ('E22',1808,'s6eapp1','houj1308',1,4,'4:30:00');
-
-UPDATE extern_validation.validation
-SET local = 'C1-5119',
-    dureeplagehoraire = '0:15:0',
-    retard = '0:40:0'
-WHERE trimester_id = 'E22'
-    AND department_id = '1808'
-    AND unit_id = 's6eapp1'
-    AND cipvalideur = 'boua1007';
-
-UPDATE extern_validation.horaireEquipe
-SET hpassageprevue = '2:00:00',
-    estterminee = TRUE
-WHERE trimester_id = 'E22'
-    AND department_id = '1808'
-    AND unit_id = 's6eapp1'
-    AND cipvalideur = 'boua1007'
-    AND no = 2
-    AND grouping = 1;
+-- UPDATE extern_validation.validation
+-- SET local = 'C1-5119',
+--     dureeplagehoraire = '0:15:0',
+--     retard = '0:40:0'
+-- WHERE trimester_id = 'E22'
+--     AND department_id = '1808'
+--     AND unit_id = 's6eapp1'
+--     AND cipvalideur = 'boua1007';
+--
+-- UPDATE extern_validation.horaireEquipe
+-- SET hpassageprevue = '2:00:00',
+--     estterminee = TRUE
+-- WHERE trimester_id = 'E22'
+--     AND department_id = '1808'
+--     AND unit_id = 's6eapp1'
+--     AND cipvalideur = 'boua1007'
+--     AND no = 2
+--     AND grouping = 1;

@@ -10,18 +10,28 @@ function StudentPage(){
 	useEffect(() => {
 		setLoading(true);
 		fetch(
-			'http://localhost:8089/api/getAllHorairesEquipe/s6eapp1/1808/E22/houj1308'
+			"http://localhost:8089/api/getAllHorairesEquipe/" +
+			window.unit_id + "/" +
+			window.department_id + "/" +
+			window.trimester_id + "/" +
+			window.username
 		).then(response => {
 			return response.json();
 		}).then(data => {
 			const validation = [];
 			for (const key in data){
+				window.numberOfEquipe += 1;
 				const HoraireEquipes = {
 					numero: data[key].equipe.no,
 					equipiers: data[key].equipe.membres,
 					horaire: data[key].hpassageprevue,
-					heureAjustee: data[key].hpassageprevue
+					heureAjustee: data[key].hpassageprevue,
+					fini: data[key].estterminee,
+					grpng: data[key].equipe.grouping
 				};
+				if (HoraireEquipes.fini === true){
+					window.currentEquipe += 1;
+				}
 				validation.push(HoraireEquipes);
 			}
 			const validInfo = {

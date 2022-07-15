@@ -47,6 +47,19 @@
           AND grouping = #{grouping};
     </update>
 
+    <insert id="remplirValidation">
+        INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
+        SELECT DISTINCT validation.trimester_id,validation.department_id,validation.unit_id,cipvalideur,grouping,no,CAST('4:30:00' as interval)
+        FROM extern_validation.equipe_unit, extern_validation.validation
+        WHERE validation.trimester_id = #{trimester_id} AND equipe_unit.trimester_id = validation.trimester_id AND
+            validation.department_id = #{department_id} AND equipe_unit.department_id = validation.department_id AND
+            validation.unit_id = #{unit_id} AND equipe_unit.unit_id = validation.unit_id AND
+            NOT EXISTS(SELECT * FROM extern_validation.horaireEquipe WHERE validation.department_id = horaireequipe.department_id AND
+            validation.trimester_id = horaireequipe.trimester_id AND
+            validation.unit_id = horaireequipe.unit_id AND
+            equipe_unit.no = horaireequipe.no AND
+            equipe_unit.grouping = horaireequipe.grouping);
+    </insert>
 </mapper>
 
 

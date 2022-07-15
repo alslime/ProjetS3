@@ -17,4 +17,22 @@
                 #{local},
                 CAST(#{dureeplagehoraire} AS INTERVAL));
     </insert>
+
+    <insert id="updateValidation">
+        UPDATE extern_validation.validation
+        SET dureeplagehoraire = CAST(#{dureeplagehoraire} AS INTERVAL)
+        WHERE trimester_id = #{trimester_id}
+          AND department_id = #{department_id}
+          AND unit_id = #{unit_id}
+          AND cipvalideur = #{cipvalideur};
+    </insert>
+
+    <insert id="updateRetard">
+        UPDATE extern_validation.validation
+        SET retard = CAST(#{retard} AS INTERVAL)
+        WHERE trimester_id = #{trimester_id}
+          AND department_id = #{department_id}
+          AND unit_id = #{unit_id}
+          AND cipvalideur = #{cipvalideur};
+    </insert>
 </mapper>
