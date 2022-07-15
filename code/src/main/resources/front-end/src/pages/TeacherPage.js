@@ -120,15 +120,12 @@ function TeacherPage(){
 		<div>
 			<h1 className={"title"}>Page des professeurs</h1>
 			<Validation validation={loadedValidation} infoValidation={loadedInfoValidation}/>
-			<button className={"bouton"} onClick={prochaineEquipe}>Prochaine Equipe</button>
-
 			<table>
 				<tr>
 					<th>Durée : <input className={"duree"} type={"number"} placeholder={"minutes"} id={"dureeInput"}/></th>
 					<th><button className={"bouton"}  onClick={() => createValid(document.getElementById("dureeInput").value)}> Create Validation </button></th>
-					<th><button className={"bouton"} onClick={finirEquipe}> Finir Equipe </button></th>
+					<th><button className={"bouton"} onClick={prochaineEquipe}>Prochaine Equipe</button></th>
 				</tr>
-
 			</table>
 		</div>
 	);
