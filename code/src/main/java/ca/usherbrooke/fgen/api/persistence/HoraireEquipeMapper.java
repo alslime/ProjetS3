@@ -12,7 +12,6 @@ public interface HoraireEquipeMapper {
                                                  @Param("department_id") String department_id,
                                                  @Param("trimester_id") String trimester_id,
                                                  @Param("cipvalideur") String cipvalideur);
-    //void insertHoraireEquipe(HoraireEquipe HE);
     void finirHoraireEquipe(@Param("no") Integer no,
                             @Param("unit_id") String unit_id,
                             @Param("department_id") String department_id,
@@ -20,5 +19,8 @@ public interface HoraireEquipeMapper {
                             @Param("cipvalideur") String cipvalideur,
                             @Param("grouping") Integer grouping,
                             @Param("estterminee") Boolean estterminee);
+    void remplirValidation(@Param("unit_id") String unit_id,
+                           @Param("department_id") String department_id,
+                           @Param("trimester_id") String trimester_id);
 }
 

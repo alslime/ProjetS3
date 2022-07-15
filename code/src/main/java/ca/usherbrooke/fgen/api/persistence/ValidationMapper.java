@@ -6,4 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ValidationMapper {
     void insertValidation(DBmodelValidation validation);
+    void updateValidation(DBmodelValidation validation);
+    void updateRetard(DBmodelValidation validation);
 }

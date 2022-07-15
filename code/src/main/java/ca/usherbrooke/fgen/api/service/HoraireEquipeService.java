@@ -78,4 +78,14 @@ public class HoraireEquipeService {
     ) {
         horaireEquipeMapper.finirHoraireEquipe(no,unit_id,department_id,trimester_id,cipvalideur,grouping,estterminee);
     }
+
+    @PUT
+    @Path("remplirValidation/{unit_id}/{department_id}/{trimester_id}")
+    public void remplirValidation(
+            @PathParam("unit_id") String unit_id,
+            @PathParam("department_id") String department_id,
+            @PathParam("trimester_id") String trimester_id
+    ) {
+        horaireEquipeMapper.remplirValidation(unit_id,department_id,trimester_id);
+    }
 }
