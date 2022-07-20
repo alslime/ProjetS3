@@ -10,13 +10,17 @@ function StudentPage(){
 	useEffect(() => {
 		setLoading(true);
 		fetch(
-			'http://localhost:8089/api/getAllHorairesEquipe',
+			"http://localhost:8089/api/getAllHorairesEquipe/" +
+		's6eapp1' + "/" +
+		'1808' + "/" +
+		'E22' + "/" +
+		'houj1308',
 			{
 				method: "GET",
 				headers: {
 					Accept: "application/json",
 					"Content-Type": "application/json",
-					Authorization: "Bearer eLrw3eXlljyFRjaul5UoYZLNgpUeapbXSFKmLc5SVaBgv8azUtoKn7B062PjbYoS",
+					Authorization: "Bearer " + window.accessToken,
 				}
 			}
 		).then(response => {

@@ -3,6 +3,9 @@ package ca.usherbrooke.fgen.api.service;
 import ca.usherbrooke.fgen.api.business.*;
 import ca.usherbrooke.fgen.api.persistence.HoraireEquipeMapper;
 
+import io.quarkus.security.Authenticated;
+import javax.annotation.security.RolesAllowed;
+
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -11,6 +14,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Path("/api")
+@Authenticated
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class HoraireEquipeService {
@@ -20,6 +24,7 @@ public class HoraireEquipeService {
 
     @GET
     @Path("getAllHorairesEquipe/{unit_id}/{department_id}/{trimester_id}/{cipvalideur}")
+    @RolesAllowed("student")
     public List<HoraireEquipe> getAllHorairesEquipe(
             @PathParam("unit_id") String unit_id,
             @PathParam("department_id") String department_id,

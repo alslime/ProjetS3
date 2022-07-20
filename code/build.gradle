@@ -13,8 +13,8 @@ repositories {
 }
 
 dependencies {
-    //implementation 'io.quarkus:quarkus-keycloak-authorization'
-    //implementation 'io.quarkus:quarkus-oidc'
+    implementation 'io.quarkus:quarkus-keycloak-authorization'
+    implementation 'io.quarkus:quarkus-oidc'
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
     implementation 'io.quarkus:quarkus-jdbc-postgresql'
     implementation 'io.quarkiverse.mybatis:quarkus-mybatis:0.0.10'
