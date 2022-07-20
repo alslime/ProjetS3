@@ -1,57 +1,62 @@
 import Validation from "../components/Validation";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useReducer} from "react";
 import "../index.css"
+import {wait} from "@testing-library/user-event/dist/utils";
 
 function TeacherPage(){
 	const [isLoading, setLoading] = useState(true);
 	const [validationCreated, setValidationCreated] = useState(false);
 	const [loadedValidation, setLoadedValidation] = useState([]);
 	const [loadedInfoValidation, setLoadedInfoValidation] = useState(null);
+	const [reducerValue, forceUpdate] = useReducer(x => x + 1, 1);
+	const [currentTeam, setCurrent] = useState(1)
+
 
 	useEffect(() => {
-		setLoading(true);
-		//tenir compte de ou on est rendu avec l'equipe a passer
-		window.numberOfEquipe = 0;
-		window.currentEquipe = 1;
-		fetch(
-			"http://localhost:8089/api/getAllHorairesEquipe/" +
-			window.unit_id + "/" +
-			window.department_id + "/" +
-			window.trimester_id + "/" +
-			window.username
-		).then(response => {
-			return response.json();
-		}).then(data => {
-			if (Object.keys(data).length !== 0)
-			{
-				const validation = [];
-				for (const key in data){
-					window.numberOfEquipe += 1;
-					const HoraireEquipes = {
-						numero: data[key].equipe.no,
-						equipiers: data[key].equipe.membres,
-						horaire: data[key].hpassageprevue,
-						heureAjustee: data[key].validation.retard,
-						fini: data[key].estterminee,
-						grpng: data[key].equipe.grouping
-					};
-					if (HoraireEquipes.fini){
-						window.currentEquipe += 1;
+		wait(1000).then(()=> {
+			setLoading(true);
+			//tenir compte de ou on est rendu avec l'equipe a passer
+			window.numberOfEquipe = 0;
+			window.currentEquipe = 1;
+			fetch(
+				"http://localhost:8089/api/getAllHorairesEquipe/" +
+				window.unit_id + "/" +
+				window.department_id + "/" +
+				window.trimester_id + "/" +
+				window.username
+			).then(response => {
+				return response.json();
+			}).then(data => {
+				if (Object.keys(data).length !== 0) {
+					const validation = [];
+					for (const key in data) {
+						window.numberOfEquipe += 1;
+						const HoraireEquipes = {
+							numero: data[key].equipe.no,
+							equipiers: data[key].equipe.membres,
+							horaire: data[key].hpassageprevue,
+							heureAjustee: data[key].validation.retard,
+							fini: data[key].estterminee,
+							grpng: data[key].equipe.grouping
+						};
+						if (HoraireEquipes.fini) {
+							window.currentEquipe += 1;
+						}
+						validation.push(HoraireEquipes);
 					}
-					validation.push(HoraireEquipes);
+					const validInfo = {
+						local: data[0].validation.local,
+						duree: data[0].validation.dureeplagehoraire,
+						retard: data[0].validation.retard
+					}
+					setLoadedValidation(validation);
+					setLoadedInfoValidation(validInfo);
+					setValidationCreated(true);
 				}
-				const validInfo = {
-					local: data[0].validation.local,
-					duree: data[0].validation.dureeplagehoraire,
-					retard: data[0].validation.retard
-				}
-				setLoadedValidation(validation);
-				setLoadedInfoValidation(validInfo);
-				setValidationCreated(true);
-			}
-			setLoading(false);
+				setLoading(false);
+			});
 		});
-	}, []);
+	}, [reducerValue]);
 
 	if (isLoading){
 		return(
@@ -87,6 +92,7 @@ function TeacherPage(){
 			}).then(response => {
 			return response.json();
 		})
+		forceUpdate();
 	}
 
 	function updateValid(time) {
@@ -107,6 +113,7 @@ function TeacherPage(){
 			return response.json();
 		})
 		setValidationCreated(true);
+		forceUpdate();
 	}
 
 	function prochaineEquipe() {
@@ -125,8 +132,12 @@ function TeacherPage(){
 				return response.json();
 			})
 			if (window.currentEquipe < window.numberOfEquipe) {
+				setCurrent(currentTeam + 1);
 				window.currentEquipe += 1;
+				//alert(currentTeam);
+				//alert(window.numberOfEquipe);
 			}
+
 			//updateRetard
 			let _data = {
 				trimester_id:window.trimester_id,
@@ -144,6 +155,8 @@ function TeacherPage(){
 				return response.json();
 			})
 		}
+
+		forceUpdate();
 	}
 
 	function equipePrecedente() {
@@ -179,6 +192,7 @@ function TeacherPage(){
 				return response.json();
 			})
 		}
+		forceUpdate();
 	}
 
 	const toReturnIfValidation = (

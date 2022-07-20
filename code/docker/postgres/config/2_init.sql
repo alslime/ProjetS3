@@ -130,6 +130,7 @@ GROUP BY schema_groupe.equipe.no, schema_groupe.horaireequipe.hpassageprevue,
          schema_groupe.validation.local, schema_groupe.validation.cipvalideur, schema_groupe.horaireequipe.estterminee,
          schema_groupe.validation.retard;
 
+
 CREATE OR REPLACE VIEW extern_validation.validation AS
 SELECT DISTINCT schema_groupe.unit.unit_id,
        schema_groupe.unit.department_id,
