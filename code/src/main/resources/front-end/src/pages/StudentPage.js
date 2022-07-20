@@ -10,31 +10,29 @@ function StudentPage(){
 	useEffect(() => {
 		setLoading(true);
 		fetch(
-			"http://localhost:8089/api/getAllHorairesEquipe/" +
-			window.unit_id + "/" +
-			window.department_id + "/" +
-			window.trimester_id + "/" +
-			window.username
+			'http://localhost:8089/api/getAllHorairesEquipe',
+			{
+				method: "GET",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+					Authorization: "Bearer eLrw3eXlljyFRjaul5UoYZLNgpUeapbXSFKmLc5SVaBgv8azUtoKn7B062PjbYoS",
+				}
+			}
 		).then(response => {
 			return response.json();
 		}).then(data => {
 			const validation = [];
 			for (const key in data){
-				window.numberOfEquipe += 1;
 				const HoraireEquipes = {
 					numero: data[key].equipe.no,
 					equipiers: data[key].equipe.membres,
 					horaire: data[key].hpassageprevue,
-					heureAjustee: data[key].hpassageprevue,
-					fini: data[key].estterminee,
-					grpng: data[key].equipe.grouping
+					heureAjustee: data[key].hpassageprevue
 				};
-				if (HoraireEquipes.fini === true){
-					window.currentEquipe += 1;
-				}
 				validation.push(HoraireEquipes);
 			}
-			var validInfo = {
+			const validInfo = {
 				local: data[0].validation.local,
 				duree: data[0].validation.dureeplagehoraire,
 				retard: data[0].validation.retard
