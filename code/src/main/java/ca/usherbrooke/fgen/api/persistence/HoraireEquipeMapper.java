@@ -1,6 +1,7 @@
 package ca.usherbrooke.fgen.api.persistence;
 
 import ca.usherbrooke.fgen.api.business.DBmodelHoraireEquipe;
+import ca.usherbrooke.fgen.api.business.DBmodelInfoEtudiant;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,6 +13,10 @@ public interface HoraireEquipeMapper {
                                                  @Param("department_id") String department_id,
                                                  @Param("trimester_id") String trimester_id,
                                                  @Param("cipvalideur") String cipvalideur);
+
+    List<DBmodelInfoEtudiant> findValidEtudiant(@Param("cipetudiant") String cipetudiant,
+                                                @Param("trimester_id") String trimester_id);
+
     void finirHoraireEquipe(@Param("no") Integer no,
                             @Param("unit_id") String unit_id,
                             @Param("department_id") String department_id,

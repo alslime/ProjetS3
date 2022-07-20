@@ -9,6 +9,7 @@ function TeacherPage(){
 	const [loadedInfoValidation, setLoadedInfoValidation] = useState(null);
 
 	useEffect(() => {
+		alert(window.username);
 		setLoading(true);
 		//tenir compte de ou on est rendu avec l'equipe a passer
 		window.numberOfEquipe = 0;
@@ -53,13 +54,14 @@ function TeacherPage(){
 		});
 	}, []);
 
-	if (isLoading){
-		return(
-			<div>Chargement...</div>
-		);
-	}
-
 	function createValid(time) {
+		setLoading(true);
+		//verification validite de la duree
+		if (verifTime(time) === false)
+		{
+			return;
+		}
+
 		let _data = {
 			trimester_id:window.trimester_id,
 			department_id:window.department_id,
@@ -87,9 +89,35 @@ function TeacherPage(){
 			}).then(response => {
 			return response.json();
 		})
+		setLoading(false);
+	}
+
+	function verifTime(time){
+		var a = false;
+		//verifier si temps est valide
+		if (time === "")
+		{
+			alert("Spécifier la durée pour une équipe");
+		} else if (parseInt(time) > 60)
+		{
+			alert("Durée maximale d'une heure dépassée");
+		} else if (parseInt(time) < 1)
+		{
+			alert("Durée nulle ou négative invalide");
+		}else {
+			a = true;
+		}
+		return a;
 	}
 
 	function updateValid(time) {
+		//verification validite de la duree
+		if (verifTime(time) === false)
+		{
+			return;
+		}
+
+		setLoading(true);
 		let _data = {
 			trimester_id:window.trimester_id,
 			department_id:window.department_id,
@@ -107,10 +135,12 @@ function TeacherPage(){
 			return response.json();
 		})
 		setValidationCreated(true);
+		setLoading(false);
 	}
 
 	function prochaineEquipe() {
 		if (window.currentEquipe <= window.numberOfEquipe){
+			setLoading(true);
 			fetch(
 				"http://localhost:8089/api/finirHoraireEquipe/" +
 				loadedValidation.at(window.currentEquipe-1).numero + "/" +
@@ -143,11 +173,13 @@ function TeacherPage(){
 				}).then(response => {
 				return response.json();
 			})
+			setLoading(false);
 		}
 	}
 
 	function equipePrecedente() {
 		if (window.currentEquipe > 1){
+			setLoading(true);
 			fetch(
 				"http://localhost:8089/api/finirHoraireEquipe/" +
 				loadedValidation.at(window.currentEquipe-2).numero + "/" +
@@ -184,23 +216,27 @@ function TeacherPage(){
 	const toReturnIfValidation = (
 		<div>
 			<h1 className={"title"}>Page des professeurs</h1>
-			<Validation validation={loadedValidation} infoValidation={loadedInfoValidation}/>
-			<th>Durée : <input className={"duree"} type={"number"} placeholder={"minutes"} id={"dureeInput"}/></th>
+			<th>Durée : <input className={"duree"} type={"number"} min={"1"} max={"60"} placeholder={"minutes"} id={"dureeInput"}/></th>
 			<button className={"bouton"} onClick={() => updateValid(document.getElementById("dureeInput").value)}>Update Validation</button>
 			<button className={"bouton"} onClick={prochaineEquipe}>Prochaine Equipe</button>
 			<button className={"bouton"} onClick={equipePrecedente}>Equipe Precedente</button>
+			<Validation validation={loadedValidation} infoValidation={loadedInfoValidation}/>
 		</div>
 	);
 
 	const toReturnBasic = (
 		<div>
 			<h1 className={"title"}>Page des professeurs</h1>
-			<th>Durée : <input className={"duree"} type={"number"} placeholder={"minutes"} id={"dureeInput"}/></th>
+			<th>Durée : <input className={"duree"} type={"number"} min={"1"} max={"60"} placeholder={"minutes"} id={"dureeInput"}/></th>
 			<button className={"bouton"} onClick={() => createValid(document.getElementById("dureeInput").value)}>Create Validation</button>
 		</div>
 	);
 
-	if (validationCreated) {
+	if (isLoading){
+		return(
+			<div>Chargement</div>
+		);
+	} else if (validationCreated) {
 		return toReturnIfValidation;
 	} else {return toReturnBasic;}
 }
