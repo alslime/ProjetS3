@@ -1,5 +1,5 @@
 import Validation from "../components/Validation";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useReducer} from "react";
 import "../index.css"
 import {wait} from "@testing-library/user-event/dist/utils";
 
@@ -8,6 +8,9 @@ function TeacherPage(){
 	const [validationCreated, setValidationCreated] = useState(false);
 	const [loadedValidation, setLoadedValidation] = useState([]);
 	const [loadedInfoValidation, setLoadedInfoValidation] = useState(null);
+	const [reducerValue, forceUpdate] = useReducer(x => x + 1, 1);
+	const [currentTeam, setCurrent] = useState(1)
+
 
 	useEffect(() => {
 		setLoading(true);
@@ -110,7 +113,6 @@ function TeacherPage(){
 			cipvalideur:window.username,
 			dureeplagehoraire:"0 years 0 mons 0 days 0 hours " + time + " mins 0.0 secs"
 		}
-		alert(window.trimester_id);
 		fetch(
 			'http://localhost:8089/api/insertValidation', {
 				method: "PUT",
@@ -131,6 +133,7 @@ function TeacherPage(){
 			}).then(response => {
 			return response.json();
 		})
+		forceUpdate();
 	}
 
 	function verifTime(time){
@@ -173,6 +176,7 @@ function TeacherPage(){
 			return response.json();
 		})
 		setValidationCreated(true);
+		forceUpdate();
 	}
 
 	function prochaineEquipe() {
@@ -191,8 +195,10 @@ function TeacherPage(){
 				return response.json();
 			})
 			if (window.currentEquipe < window.numberOfEquipe) {
+				setCurrent(currentTeam + 1);
 				window.currentEquipe += 1;
 			}
+
 			//updateRetard
 			let _data = {
 				trimester_id:window.trimester_id,
@@ -201,7 +207,6 @@ function TeacherPage(){
 				cipvalideur:window.username,
 				retard: "0 years 0 mons 0 days 0 hours 15 mins 0.0 secs"
 			}
-			alert(window.department_id);
 			fetch(
 				'http://localhost:8089/api/updateRetard', {
 					method: "PUT",
@@ -211,6 +216,7 @@ function TeacherPage(){
 				return response.json();
 			})
 		}
+		forceUpdate();
 	}
 
 	function equipePrecedente() {
@@ -246,6 +252,7 @@ function TeacherPage(){
 				return response.json();
 			})
 		}
+		forceUpdate();
 	}
 
 	const toReturnIfValidation = (
