@@ -1,6 +1,7 @@
 import Validation from "../components/Validation";
 import {useState, useEffect} from "react";
 import "./Pages.css"
+import {wait} from "@testing-library/user-event/dist/utils";
 
 function StudentPage(){
 	const [isLoading, setLoading] = useState(true);
@@ -9,10 +10,26 @@ function StudentPage(){
 	const [loadedInfoValidation, setLoadedInfoValidation] = useState(null);
 
 	useEffect(() => {
-		alert(window.username);
 		setLoading(true);
+		wait(1000).then(()=>{
 
+		if (window.department_id === undefined || window.unit_id === undefined){
+			//Aller chercher departement et App en cours
+			fetch(
+				"http://localhost:8089/api/findValidEtudiant/" +
+				window.username + "/" +
+				window.trimester_id
+			).then(response => {
+				return response.json();
+			}).then(data => {
+				if (Object.keys(data).length !== 0) {
 
+					window.department_id = data[0].department_id;
+					window.unit_id = data[0].unit_id;
+					window.cip_prof = data[0].cip_prof;
+				}
+			});
+		}
 
 		//tenir compte de ou on est rendu avec l'equipe a passer
 		window.numberOfEquipe = 0;
@@ -22,7 +39,7 @@ function StudentPage(){
 			window.unit_id + "/" +
 			window.department_id + "/" +
 			window.trimester_id + "/" +
-			window.username
+			window.cip_prof
 		).then(response => {
 			return response.json();
 		}).then(data => {
@@ -54,7 +71,7 @@ function StudentPage(){
 				setValidationCreated(true);
 			}
 			setLoading(false);
-		});
+		});})
 	}, []);
 
 	const toReturnIfValidation = (

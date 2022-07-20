@@ -2,12 +2,14 @@ import Keycloak from "keycloak-js";
 import {Component} from "react";
 import App from "./App";
 import {BrowserRouter} from "react-router-dom";
+import {wait} from "@testing-library/user-event/dist/utils";
 
 class Secured extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { keycloak: null,
 			authenticated:false,
+			isLoading:true,
 			name: "",
 			email: "",
 			id: ""};
@@ -36,11 +38,6 @@ class Secured extends Component {
 							window.trimester_id = 'A'
 						}
 						window.trimester_id = window.trimester_id.concat(year.toString());
-
-						//Aller chercher departement et App en cours
-						window.department_id = '1808';
-						window.unit_id = 's6eapp1';
-
 					}).catch(function() {
 					alert('Failed to load user profile');
 				});

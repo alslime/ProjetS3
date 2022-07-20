@@ -59,11 +59,25 @@ public class HoraireEquipeService {
         return listeHE;
     }
 
-//    @PUT
-//    @Path("insertHoraireEquipe")
-//    public void insertHoraireEquipe(HoraireEquipe HE) {
-//        horaireEquipeMapper.insertHoraireEquipe(HE);
-//    }
+    @GET
+    @Path("findValidEtudiant/{cipetudiant}/{trimester_id}")
+    public List<DBmodelInfoEtudiant> findValidEtudiant(
+            @PathParam("cipetudiant") String cipetudiant,
+            @PathParam("trimester_id") String trimester_id
+    ) {
+        LOG.info("findValidEtudiant");
+        return this.horaireEquipeMapper.findValidEtudiant(cipetudiant,trimester_id);
+    }
+
+    @GET
+    @Path("findValidProf/{cip_prof}/{trimester_id}")
+    public List<DBmodelInfoProf> findValidProf(
+            @PathParam("cip_prof") String cip_prof,
+            @PathParam("trimester_id") String trimester_id
+    ) {
+        LOG.info("findValidProf");
+        return this.horaireEquipeMapper.findValidProf(cip_prof,trimester_id);
+    }
 
     @PUT
     @Path("finirHoraireEquipe/{no}/{unit_id}/{department_id}/{trimester_id}/{cipvalideur}/{grouping}/{estterminee}")
@@ -76,16 +90,18 @@ public class HoraireEquipeService {
             @PathParam("grouping") Integer grouping,
             @PathParam("estterminee") Boolean estterminee
     ) {
+        LOG.info("finirHoraireEquipe");
         horaireEquipeMapper.finirHoraireEquipe(no,unit_id,department_id,trimester_id,cipvalideur,grouping,estterminee);
     }
 
     @PUT
-    @Path("remplirValidation/{unit_id}/{department_id}/{trimester_id}")
+    @Path("remplirValidation/{unit_id}/{department_id}/{trimester_id}/{cipvalideur}")
     public void remplirValidation(
             @PathParam("unit_id") String unit_id,
             @PathParam("department_id") String department_id,
-            @PathParam("trimester_id") String trimester_id
+            @PathParam("trimester_id") String trimester_id,
+            @PathParam("cipvalideur") String cipvalideur
     ) {
-        horaireEquipeMapper.remplirValidation(unit_id,department_id,trimester_id);
+        horaireEquipeMapper.remplirValidation(unit_id,department_id,trimester_id,cipvalideur);
     }
 }

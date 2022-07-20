@@ -104,7 +104,16 @@ CREATE TABLE schema_groupe.horaireEquipe
 CREATE SCHEMA extern_validation;
 
 CREATE OR REPLACE VIEW extern_validation.unit_infoMadeUp AS
-SELECT DISTINCT department_id, trimester_id, 's6eapp1' as unit_id, cip_prof, '2021/01/01' as debut, '2023/01/01' as fin, '00:09:30' as heure
+SELECT DISTINCT department_id,
+                trimester_id,
+                's6eapp1' as unit_id,
+                cip_prof,
+                '2021/01/01'::date as debut,
+                '2023/01/01'::date as fin,
+                '2022/07/20'::date as dateValid,
+                '00:09:30'::time as heure_debut,
+                '3:00:00'::interval as temps,
+                'C1-5028' as local
 FROM schema_groupe.unit
 WHERE department_id = '1808' AND
       trimester_id = 'E22' AND
@@ -117,7 +126,7 @@ WHERE equipe.equipe_id = schema_groupe.equipe_etudiants.equipe_id AND
         equipe.serial_unit_id = unit.serial_unit_id;
 
 CREATE OR REPLACE VIEW extern_validation.horaireEquipe AS
-SELECT schema_groupe.equipe.no,
+SELECT DISTINCT schema_groupe.equipe.no,
        array_agg(schema_groupe.equipe_etudiants.cipetudiant),
        schema_groupe.unit.department_id,
        schema_groupe.unit.trimester_id,
@@ -296,13 +305,9 @@ CREATE TRIGGER update_validation
 -- SELECT DISTINCT validation.trimester_id,validation.department_id,validation.unit_id,cipvalideur,grouping,no,CAST('4:30:00' as interval)
 -- FROM extern_validation.equipe_unit, extern_validation.validation
 -- WHERE validation.trimester_id = 'E22' AND equipe_unit.trimester_id = validation.trimester_id AND
---       validation.department_id = '1808' AND equipe_unit.department_id = validation.department_id AND
+--       validation.department_id = '1809' AND equipe_unit.department_id = validation.department_id AND
 --       validation.unit_id = 's6eapp1' AND equipe_unit.unit_id = validation.unit_id AND
---       NOT EXISTS(SELECT * FROM extern_validation.horaireEquipe WHERE validation.department_id = horaireequipe.department_id AND
---                                                                      validation.trimester_id = horaireequipe.trimester_id AND
---                                                                      validation.unit_id = horaireequipe.unit_id AND
---                                                                      equipe_unit.no = horaireequipe.no AND
---                                                                      equipe_unit.grouping = horaireequipe.grouping);
+--       NOT EXISTS(SELECT * FROM extern_validation.horaireEquipe);
 
 -- UPDATE extern_validation.validation
 -- SET local = 'C1-5119',
@@ -323,16 +328,8 @@ CREATE TRIGGER update_validation
 --     AND no = 2
 --     AND grouping = 1;
 
--- SELECT * FROM generate_series(0,100,(EXTRACT(EPOCH FROM '0 years 0 mons 0 days 0 hours 20 mins 0.0 secs'::INTERVAL)/60)::integer);
---
--- SELECT DISTINCT make_interval(mins => generate_series(0,720,(EXTRACT(EPOCH FROM (SELECT DISTINCT dureeplagehoraire
---                                                                                   FROM extern_validation.validation
---                                                                                   WHERE validation.trimester_id = 'E22' AND
---                                                                                           validation.department_id = '1808' AND
---                                                                                           validation.unit_id = 's6eapp1'
---                                                                                   )::INTERVAL)/60)::integer)), (generate_series(0,1))
--- FROM extern_validation.equipe_unit;
--- --
+-- SELECT generate_series(0,100,(EXTRACT(EPOCH FROM '0 years 0 mons 0 days 0 hours 20 mins 0.0 secs'::INTERVAL)/60)::integer), generate_series(0,100);
+
 -- SELECT DISTINCT validation.trimester_id,
 --                 validation.department_id,
 --                 validation.unit_id,
@@ -384,6 +381,38 @@ CREATE TRIGGER update_validation
 --                 cipvalideur,
 --                 grouping,
 --                 no,
+--                 (make_interval(mins => generate_series(0,60,(EXTRACT(EPOCH FROM (SELECT DISTINCT dureeplagehoraire
+--                                                                                  FROM extern_validation.validation
+--                                                                                  WHERE validation.trimester_id = 'E22' AND
+--                                                                                          validation.department_id = '1808' AND
+--                                                                                          validation.unit_id = 's6eapp1' AND
+--                                                                                          cipvalideur = 'boua1007'
+--                 )::INTERVAL)/60)::integer)))
+-- FROM extern_validation.equipe_unit, extern_validation.validation
+-- WHERE validation.trimester_id = 'E22' AND equipe_unit.trimester_id = validation.trimester_id AND
+--     validation.department_id = '1808' AND equipe_unit.department_id = validation.department_id AND
+--     validation.unit_id = 's6eapp1' AND equipe_unit.unit_id = validation.unit_id AND
+--     validation.cipvalideur = 'boua1007' AND
+--     NOT EXISTS(SELECT * FROM extern_validation.horaireEquipe WHERE validation.department_id = horaireequipe.department_id AND
+--     validation.trimester_id = horaireequipe.trimester_id AND
+--     validation.unit_id = horaireequipe.unit_id AND
+--     equipe_unit.no = horaireequipe.no AND
+--     equipe_unit.grouping = horaireequipe.grouping);
+--
+--
+-- INSERT INTO extern_validation.horaireequipe(trimester_id,
+--                                             department_id,
+--                                             unit_id,
+--                                             cipvalideur,
+--                                             grouping,
+--                                             no,
+--                                             hpassageprevue)
+-- SELECT DISTINCT extern_validation.validation.trimester_id,
+--                 extern_validation.validation.department_id,
+--                 extern_validation.validation.unit_id,
+--                 cipvalideur,
+--                 grouping,
+--                 no,
 --                 CAST('4:30:00' as interval)
 -- --                         make_interval(mins => generate_series(0,720,(EXTRACT(EPOCH FROM (SELECT DISTINCT retard
 -- --                         FROM extern_validation.validation
@@ -393,14 +422,14 @@ CREATE TRIGGER update_validation
 -- --                         )::INTERVAL)/60)::integer)) as hpassageprevue
 -- FROM extern_validation.equipe_unit,
 --      extern_validation.validation
--- WHERE validation.trimester_id = 'E22' AND equipe_unit.trimester_id = validation.trimester_id AND
---     validation.department_id = '1808' AND equipe_unit.department_id = validation.department_id AND
---     validation.unit_id = 's6eapp1' AND equipe_unit.unit_id = validation.unit_id AND
+-- WHERE validation.trimester_id = #{trimester_id} AND equipe_unit.trimester_id = validation.trimester_id AND
+--     validation.department_id = #{department_id} AND equipe_unit.department_id = validation.department_id AND
+--     validation.unit_id = #{unit_id} AND equipe_unit.unit_id = validation.unit_id AND
 --     NOT EXISTS(SELECT * FROM extern_validation.horaireEquipe WHERE validation.department_id = horaireequipe.department_id AND
 --     validation.trimester_id = horaireequipe.trimester_id AND
 --     validation.unit_id = horaireequipe.unit_id AND
 --     equipe_unit.no = horaireequipe.no AND
 --     equipe_unit.grouping = horaireequipe.grouping);
-
+--
 
 

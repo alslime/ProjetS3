@@ -10,12 +10,17 @@
                                                  cipvalideur,
                                                  local,
                                                  dureeplagehoraire)
-        VALUES (#{trimester_id},
-                #{department_id},
-                #{unit_id},
-                #{cipvalideur},
-                #{local},
-                CAST(#{dureeplagehoraire} AS INTERVAL));
+        SELECT DISTINCT #{trimester_id},
+                        #{department_id},
+                        #{unit_id},
+                        #{cipvalideur},
+                        local,
+                        CAST(#{dureeplagehoraire} AS INTERVAL)
+        FROM extern_validation.unit_infomadeup
+        WHERE trimester_id = #{trimester_id}
+          AND department_id = #{department_id}
+          AND unit_id = #{unit_id}
+          AND cip_prof = #{cipvalideur};
     </insert>
 
     <insert id="updateValidation">
