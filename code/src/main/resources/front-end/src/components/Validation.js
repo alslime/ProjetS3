@@ -5,6 +5,11 @@ import "./Components.css"
 function Validation(props){
 	return(
 		<div>
+			<InfoValidation
+				local={props.infoValidation.local}
+				duree={props.infoValidation.duree}
+				retard={props.infoValidation.retard}
+			/>
 			<table className={"table"}>
 				<tr className={"entete"}>
 					<th>Numero</th>
@@ -22,11 +27,6 @@ function Validation(props){
 					/>
 				))}
 			</table>
-			<InfoValidation
-				local={props.infoValidation.local}
-				duree={props.infoValidation.duree}
-				retard={props.infoValidation.retard}
-			/>
 		</div>
 	);
 }

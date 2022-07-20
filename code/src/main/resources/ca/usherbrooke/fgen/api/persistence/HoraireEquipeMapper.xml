@@ -48,9 +48,28 @@
     </update>
 
     <insert id="remplirValidation">
-        INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
-        SELECT DISTINCT validation.trimester_id,validation.department_id,validation.unit_id,cipvalideur,grouping,no,CAST('4:30:00' as interval)
-        FROM extern_validation.equipe_unit, extern_validation.validation
+        INSERT INTO extern_validation.horaireEquipe(trimester_id,
+                                                    department_id,
+                                                    unit_id,
+                                                    cipvalideur,
+                                                    grouping,
+                                                    no,
+                                                    hpassageprevue)
+        SELECT DISTINCT validation.trimester_id,
+                        validation.department_id,
+                        validation.unit_id,
+                        cipvalideur,
+                        grouping,
+                        no,
+                        CAST('4:30:00' as interval)
+--                         make_interval(mins => generate_series(0,720,(EXTRACT(EPOCH FROM (SELECT DISTINCT retard
+--                         FROM extern_validation.validation
+--                         WHERE validation.trimester_id = #{trimester_id} AND
+--                         validation.department_id = #{department_id} AND
+--                         validation.unit_id = #{unit_id}
+--                         )::INTERVAL)/60)::integer)) as hpassageprevue
+        FROM extern_validation.equipe_unit,
+            extern_validation.validation
         WHERE validation.trimester_id = #{trimester_id} AND equipe_unit.trimester_id = validation.trimester_id AND
             validation.department_id = #{department_id} AND equipe_unit.department_id = validation.department_id AND
             validation.unit_id = #{unit_id} AND equipe_unit.unit_id = validation.unit_id AND
@@ -60,6 +79,21 @@
             equipe_unit.no = horaireequipe.no AND
             equipe_unit.grouping = horaireequipe.grouping);
     </insert>
+
+    <select id="findValidEtudiant">
+        SELECT DISTINCT extern_validation.unit_infoMadeUp.department_id,
+                        extern_validation.unit_infoMadeUp.unit_id,
+                        no,
+                        grouping,
+                        cip_prof
+        FROM extern_validation.equipe_etudiants, extern_validation.unit_infoMadeUp
+        WHERE cipetudiant = #{cipetudiant} AND
+            unit_infomadeup.trimester_id = #{trimester_id} AND
+            equipe_etudiants.trimester_id = unit_infomadeup.trimester_id AND
+            equipe_etudiants.department_id = unit_infomadeup.department_id AND
+            equipe_etudiants.unit_id = unit_infomadeup.unit_id AND
+            (CURRENT_DATE between unit_infomadeup.debut::date and unit_infomadeup.fin::date)
+    </select>
 </mapper>
 
 
