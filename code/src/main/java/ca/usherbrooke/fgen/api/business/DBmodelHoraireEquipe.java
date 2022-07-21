@@ -2,7 +2,7 @@ package ca.usherbrooke.fgen.api.business;
 
 public class DBmodelHoraireEquipe {
     public Integer no;
-    public String array_agg;
+    public String membres;
     public String department_id;
     public String trimester_id;
     public String unit_id;

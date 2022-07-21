@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ca.usherbrooke.fgen.api.persistence.HoraireEquipeMapper">
     <select id="allHorairesEquipe" resultMap="mapDBModelHoraireEquipe">
-        SELECT * FROM extern_validation.horaireequipe
+        SELECT DISTINCT * FROM extern_validation.horaireEquipe
         WHERE unit_id = #{unit_id} and
               department_id = #{department_id} and
               trimester_id = #{trimester_id} and
@@ -13,7 +13,7 @@
 
     <resultMap id="mapDBModelHoraireEquipe" type="ca.usherbrooke.fgen.api.business.DBmodelHoraireEquipe">
         <id property="no" column="no"/>
-        <result property="array_agg" column="array_agg"/>
+        <result property="membres" column="membres" jdbcType="VARCHAR"/>
         <result property="trimester_id" column="trimester_id"/>
         <result property="department_id" column="department_id"/>
         <result property="unit_id" column="unit_id"/>
@@ -55,21 +55,29 @@
                                                     grouping,
                                                     no,
                                                     hpassageprevue)
-        SELECT DISTINCT v.trimester_id as trimester_id,
-                        v.department_id as department_id,
-                        v.unit_id as unit_id,
-                        cipvalideur,
-                        grouping,
-                        no,
-                        CAST('4:30:00' as interval) as hpassageprevue
-        FROM extern_validation.equipe_unit as e, extern_validation.validation as v
-        WHERE v.trimester_id = #{trimester_id}
-            AND e.trimester_id = v.trimester_id
-            AND v.department_id = #{department_id}
-            AND e.department_id = v.department_id
-            AND v.unit_id = #{unit_id}
-            AND e.unit_id = v.unit_id
-            AND v.cipvalideur = #{cipvalideur};
+        SELECT validation.trimester_id,
+               validation.department_id,
+               validation.unit_id,
+               validation.cipvalideur,
+               grouping,
+                no,
+                (SELECT DISTINCT heure_debut
+                FROM extern_validation.unit_infoMadeUp
+                WHERE trimester_id = 'E22'
+                AND department_id = '1808'
+                AND unit_id = 's6eapp1'
+                AND cip_prof = 'boua2511')::interval + make_interval(mins =>((no-1)*EXTRACT(minutes from (SELECT Distinct dureeplagehoraire
+                FROM extern_validation.validation))::INTEGER)) as hpassageprevue
+        FROM extern_validation.validation INNER JOIN extern_validation.equipe_unit
+        ON
+            validation.trimester_id = equipe_unit.trimester_id AND
+            validation.department_id = equipe_unit.department_id AND
+            validation.unit_id = equipe_unit.unit_id AND
+            validation.cipvalideur = equipe_unit.cip_prof
+        WHERE validation.trimester_id = #{trimester_id}
+            AND validation.department_id = #{department_id}
+            AND validation.unit_id = #{unit_id}
+            AND validation.cipvalideur = #{cipvalideur};
     </insert>
 
     <select id="findValidEtudiant" resultMap="mapDBmodelInfoEtudiant">
