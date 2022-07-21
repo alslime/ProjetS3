@@ -2,11 +2,15 @@ import Keycloak from "keycloak-js";
 import {Component} from "react";
 import App from "./App";
 import {BrowserRouter} from "react-router-dom";
+import {wait} from "@testing-library/user-event/dist/utils";
 
 class Secured extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { keycloak: null, authenticated: false, name: "",
+		this.state = { keycloak: null,
+			authenticated:false,
+			isLoading:true,
+			name: "",
 			email: "",
 			id: ""};
 	}
@@ -14,12 +18,26 @@ class Secured extends Component {
 	componentDidMount() {
 		const keycloak = Keycloak('/keycloak.json');
 		keycloak.init({onLoad: 'login-required'}).then(authenticated => {
-			this.setState({keycloak: keycloak, authenticated: authenticated})
+			this.setState({keycloak: keycloak, authenticated: authenticated});
 			if (authenticated) {
 				window.accessToken = keycloak.token;
 				keycloak.loadUserProfile()
 					.then(function(profile) {
 						window.username = profile.username;
+						//Make trimester_id String
+						var year = new Date();
+						year = year.getFullYear().toString().substring(2,4);
+						window.trimester_id = '';
+						var month = new Date();
+						month = month.getMonth()+1;
+						if (month+1 < 5){
+							window.trimester_id = 'H'
+						}else if (month+1 < 9){
+							window.trimester_id = 'E'
+						}else{
+							window.trimester_id = 'A'
+						}
+						window.trimester_id = window.trimester_id.concat(year.toString());
 					}).catch(function() {
 					alert('Failed to load user profile');
 				});
@@ -33,7 +51,7 @@ class Secured extends Component {
 				<BrowserRouter>
 					<App />
 				</BrowserRouter>
-			); else return (<div>Impossible de s'authentifier!</div>)
+			); else return (<div>Impossible de s'authentifier</div>)
 		}
 		return (
 			<div>Initialisation du serveur d'authentification...</div>

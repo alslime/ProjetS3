@@ -48,18 +48,77 @@
     </update>
 
     <insert id="remplirValidation">
-        INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
-        SELECT DISTINCT validation.trimester_id,validation.department_id,validation.unit_id,cipvalideur,grouping,no,CAST('4:30:00' as interval)
-        FROM extern_validation.equipe_unit, extern_validation.validation
-        WHERE validation.trimester_id = #{trimester_id} AND equipe_unit.trimester_id = validation.trimester_id AND
-            validation.department_id = #{department_id} AND equipe_unit.department_id = validation.department_id AND
-            validation.unit_id = #{unit_id} AND equipe_unit.unit_id = validation.unit_id AND
-            NOT EXISTS(SELECT * FROM extern_validation.horaireEquipe WHERE validation.department_id = horaireequipe.department_id AND
-            validation.trimester_id = horaireequipe.trimester_id AND
-            validation.unit_id = horaireequipe.unit_id AND
-            equipe_unit.no = horaireequipe.no AND
-            equipe_unit.grouping = horaireequipe.grouping);
+        INSERT INTO extern_validation.horaireequipe(trimester_id,
+                                                    department_id,
+                                                    unit_id,
+                                                    cipvalideur,
+                                                    grouping,
+                                                    no,
+                                                    hpassageprevue)
+        SELECT DISTINCT v.trimester_id as trimester_id,
+                        v.department_id as department_id,
+                        v.unit_id as unit_id,
+                        cipvalideur,
+                        grouping,
+                        no,
+                        CAST('4:30:00' as interval) as hpassageprevue
+        FROM extern_validation.equipe_unit as e, extern_validation.validation as v
+        WHERE v.trimester_id = #{trimester_id}
+            AND e.trimester_id = v.trimester_id
+            AND v.department_id = #{department_id}
+            AND e.department_id = v.department_id
+            AND v.unit_id = #{unit_id}
+            AND e.unit_id = v.unit_id
+            AND v.cipvalideur = #{cipvalideur};
     </insert>
+
+    <select id="findValidEtudiant" resultMap="mapDBmodelInfoEtudiant">
+        SELECT DISTINCT extern_validation.unit_infoMadeUp.department_id,
+                        extern_validation.unit_infoMadeUp.unit_id,
+                        no,
+                        grouping,
+                        cip_prof
+        FROM extern_validation.equipe_etudiants, extern_validation.unit_infoMadeUp
+        WHERE cipetudiant = #{cipetudiant} AND
+            unit_infomadeup.trimester_id = #{trimester_id} AND
+            equipe_etudiants.trimester_id = unit_infomadeup.trimester_id AND
+            equipe_etudiants.department_id = unit_infomadeup.department_id AND
+            equipe_etudiants.unit_id = unit_infomadeup.unit_id AND
+            (CURRENT_DATE between unit_infomadeup.debut::date and unit_infomadeup.fin::date)
+    </select>
+
+    <resultMap id="mapDBmodelInfoEtudiant" type="ca.usherbrooke.fgen.api.business.DBmodelInfoEtudiant">
+        <id property="no" column="no"/>
+        <result property="grouping" column="grouping"/>
+        <result property="cip_prof" column="cip_prof"/>
+        <result property="department_id" column="department_id"/>
+        <result property="unit_id" column="unit_id"/>
+    </resultMap>
+
+    <select id="findValidProf" resultMap="mapDBmodelInfoProf">
+        SELECT DISTINCT department_id,
+                        unit_id,
+                        debut,
+                        fin,
+                        datevalid,
+                        heure_debut,
+                        temps
+        FROM extern_validation.unit_infomadeup
+        WHERE cip_prof = #{cip_prof} AND
+            trimester_id = #{trimester_id} AND
+            (CURRENT_DATE between unit_infomadeup.debut::date and unit_infomadeup.fin::date)
+    </select>
+
+    <resultMap id="mapDBmodelInfoProf" type="ca.usherbrooke.fgen.api.business.DBmodelInfoProf">
+        <id property="fin" column="fin"/>
+        <result property="debut" column="debut"/>
+        <result property="cip_prof" column="cip_prof"/>
+        <result property="department_id" column="department_id"/>
+        <result property="unit_id" column="unit_id"/>
+        <result property="datevalid" column="datevalid"/>
+        <result property="heure_debut" column="heure_debut"/>
+        <result property="temps" column="temps"/>
+    </resultMap>
 </mapper>
 
 

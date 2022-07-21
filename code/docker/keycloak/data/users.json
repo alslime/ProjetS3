@@ -1,7 +1,24 @@
-
 {
   "realm": "Validation",
   "users": [
+    {
+      "username": "beae3902",
+      "enabled": true,
+      "firstName": "Eloïse",
+      "lastName": "Beaulieu-Arsenault",
+      "email": "beae3902@usherbrooke.ca",
+      "realmRoles": [
+        "student",
+        "default-roles-validation"
+      ],
+      "credentials": [
+        {
+          "temporary": true,
+          "type": "password",
+          "value": "projet"
+        }
+      ]
+    },
     {
       "username": "burt0701",
       "enabled": true,
