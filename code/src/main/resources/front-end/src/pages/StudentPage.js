@@ -18,7 +18,15 @@ function StudentPage(){
 			fetch(
 				"http://localhost:8089/api/findValidEtudiant/" +
 				window.username + "/" +
-				window.trimester_id
+				window.trimester_id,
+				{
+					method: "GET",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + window.accessToken,
+					}
+				}
 			).then(response => {
 				return response.json();
 			}).then(data => {

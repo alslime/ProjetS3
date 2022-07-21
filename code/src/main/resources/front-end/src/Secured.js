@@ -2,7 +2,6 @@ import Keycloak from "keycloak-js";
 import {Component} from "react";
 import App from "./App";
 import {BrowserRouter} from "react-router-dom";
-import {wait} from "@testing-library/user-event/dist/utils";
 
 class Secured extends Component {
 	constructor(props) {

@@ -24,7 +24,7 @@ public class HoraireEquipeService {
 
     @GET
     @Path("getAllHorairesEquipe/{unit_id}/{department_id}/{trimester_id}/{cipvalideur}")
-    @RolesAllowed("student")
+    @RolesAllowed("default-roles-validation")
     public List<HoraireEquipe> getAllHorairesEquipe(
             @PathParam("unit_id") String unit_id,
             @PathParam("department_id") String department_id,
@@ -66,6 +66,7 @@ public class HoraireEquipeService {
 
     @GET
     @Path("findValidEtudiant/{cipetudiant}/{trimester_id}")
+    @RolesAllowed("student")
     public List<DBmodelInfoEtudiant> findValidEtudiant(
             @PathParam("cipetudiant") String cipetudiant,
             @PathParam("trimester_id") String trimester_id
@@ -76,6 +77,7 @@ public class HoraireEquipeService {
 
     @GET
     @Path("findValidProf/{cip_prof}/{trimester_id}")
+    @RolesAllowed("teacher")
     public List<DBmodelInfoProf> findValidProf(
             @PathParam("cip_prof") String cip_prof,
             @PathParam("trimester_id") String trimester_id
@@ -86,6 +88,7 @@ public class HoraireEquipeService {
 
     @PUT
     @Path("finirHoraireEquipe/{no}/{unit_id}/{department_id}/{trimester_id}/{cipvalideur}/{grouping}/{estterminee}")
+    @RolesAllowed("teacher")
     public void finirHoraireEquipe(
             @PathParam("no") Integer no,
             @PathParam("unit_id") String unit_id,
@@ -101,6 +104,7 @@ public class HoraireEquipeService {
 
     @PUT
     @Path("remplirValidation/{unit_id}/{department_id}/{trimester_id}/{cipvalideur}")
+    @RolesAllowed("teacher")
     public void remplirValidation(
             @PathParam("unit_id") String unit_id,
             @PathParam("department_id") String department_id,

@@ -21,8 +21,15 @@ function TeacherPage(){
 				fetch(
 					"http://localhost:8089/api/findValidProf/" +
 					window.username + "/" +
-					window.trimester_id
-				).then(response => {
+					window.trimester_id,
+					{
+						method: "GET",
+						headers: {
+							Accept: "application/json",
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + window.accessToken
+						}
+					}).then(response => {
 					return response.json();
 				}).then(data => {
 					if (Object.keys(data).length !== 0) {
@@ -46,8 +53,15 @@ function TeacherPage(){
 				's6eapp1' + "/" +
 				'1808' + "/" +
 				window.trimester_id + "/" +
-				window.username
-			).then(response => {
+				window.username,
+				{
+					method: "GET",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + window.accessToken
+					}
+				}).then(response => {
 				return response.json();
 			}).then(data => {
 				if (Object.keys(data).length !== 0) {
@@ -114,10 +128,14 @@ function TeacherPage(){
 			dureeplagehoraire:"0 years 0 mons 0 days 0 hours " + time + " mins 0.0 secs"
 		}
 		fetch(
-			'http://localhost:8089/api/insertValidation', {
+			'http://localhost:8089/api/insertValidation',{
 				method: "PUT",
 				body: JSON.stringify(_data),
-				headers: {"Content-type": "application/json; charset=UTF-8"}
+				headers: {
+					Accept: "application/json",
+					"Content-type": "application/json; charset=UTF-8",
+					Authorization: "Bearer " + window.accessToken
+				}
 			}).then(response => {
 				return response.json();
 			})
@@ -129,7 +147,12 @@ function TeacherPage(){
 			window.department_id + "/" +
 			window.trimester_id + "/" +
 			window.username, {
-				method: "PUT"
+				method: "PUT",
+				headers: {
+				Accept: "application/json",
+					"Content-Type": "application/json",
+					Authorization: "Bearer " + window.accessToken
+			}
 			}).then(response => {
 			return response.json();
 		})
@@ -171,7 +194,11 @@ function TeacherPage(){
 			'http://localhost:8089/api/updateValidation', {
 				method: "PUT",
 				body: JSON.stringify(_data),
-				headers: {"Content-type": "application/json; charset=UTF-8"}
+				headers: {
+				Accept: "application/json",
+					"Content-type": "application/json; charset=UTF-8",
+				Authorization: "Bearer " + window.accessToken
+				}
 			}).then(response => {
 			return response.json();
 		})
@@ -190,7 +217,12 @@ function TeacherPage(){
 				window.username + "/" +
 				loadedValidation.at(window.currentEquipe-1).grpng +
 				"/true", {
-					method: "PUT"
+					method: "PUT",
+					headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+					Authorization: "Bearer " + window.accessToken
+					}
 				}).then(response => {
 				return response.json();
 			})
@@ -211,7 +243,11 @@ function TeacherPage(){
 				'http://localhost:8089/api/updateRetard', {
 					method: "PUT",
 					body: JSON.stringify(_data),
-					headers: {"Content-type": "application/json; charset=UTF-8"}
+					headers: {
+					Accept: "application/json",
+						"Content-type": "application/json; charset=UTF-8",
+					Authorization: "Bearer " + window.accessToken
+					}
 				}).then(response => {
 				return response.json();
 			})
@@ -230,7 +266,12 @@ function TeacherPage(){
 				window.username + "/" +
 				loadedValidation.at(window.currentEquipe-2).grpng +
 				"/false", {
-					method: "PUT"
+					method: "PUT",
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + window.accessToken
+						}
 				}).then(response => {
 				return response.json();
 			})
@@ -247,7 +288,11 @@ function TeacherPage(){
 				'http://localhost:8089/api/updateRetard', {
 					method: "PUT",
 					body: JSON.stringify(_data),
-					headers: {"Content-type": "application/json; charset=UTF-8"}
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json; charset=UTF-8",
+						Authorization: "Bearer " + window.accessToken
+					}
 				}).then(response => {
 				return response.json();
 			})
