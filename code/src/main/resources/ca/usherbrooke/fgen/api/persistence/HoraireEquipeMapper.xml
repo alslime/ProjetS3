@@ -61,13 +61,16 @@
                validation.cipvalideur,
                grouping,
                 no,
-                (SELECT DISTINCT heure_debut
+                ((SELECT DISTINCT heure_debut
                 FROM extern_validation.unit_infoMadeUp
-                WHERE trimester_id = 'E22'
-                AND department_id = '1808'
-                AND unit_id = 's6eapp1'
-                AND cip_prof = 'boua2511')::interval + make_interval(mins =>((no-1)*EXTRACT(minutes from (SELECT Distinct dureeplagehoraire
-                FROM extern_validation.validation))::INTEGER)) as hpassageprevue
+                WHERE trimester_id = #{trimester_id}
+                AND department_id = #{department_id}
+                AND unit_id = #{unit_id}
+                AND cip_prof = #{cipvalideur})::interval + make_interval(mins =>((no-1)*EXTRACT(minutes from (SELECT Distinct dureeplagehoraire
+                FROM extern_validation.validation))::INTEGER) WHERE trimester_id = #{trimester_id}
+                                                                AND department_id = #{department_id}
+                                                                AND unit_id = #{unit_id}
+                                                                AND cip_prof = #{cipvalideur})) as hpassageprevue
         FROM extern_validation.validation INNER JOIN extern_validation.equipe_unit
         ON
             validation.trimester_id = equipe_unit.trimester_id AND

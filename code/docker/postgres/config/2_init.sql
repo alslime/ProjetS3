@@ -287,8 +287,8 @@ CREATE TRIGGER update_validation
 --**********************************************************
 --TESTS
 --**********************************************************
- INSERT INTO extern_validation.validation(trimester_id,department_id,unit_id,cipvalideur,local,dureeplagehoraire)
-    VALUES ('E22',1808,'s6eapp1','houj1308','C1-3021','0:45:0');
+--  INSERT INTO extern_validation.validation(trimester_id,department_id,unit_id,cipvalideur,local,dureeplagehoraire)
+--     VALUES ('E22',1808,'s6eapp1','houj1308','C1-3021','0:45:0');
 --
 -- INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
 --     VALUES ('E22',1808,'s6eapp1','houj1308',1,1,'4:30:00');
@@ -299,13 +299,13 @@ CREATE TRIGGER update_validation
 -- INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
 -- VALUES ('E22',1808,'s6eapp1','houj1308',1,4,'4:30:00');
 --
- INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
- SELECT DISTINCT validation.trimester_id,validation.department_id,validation.unit_id,cipvalideur,grouping,no,CAST('4:30:00' as interval)
- FROM extern_validation.equipe_unit, extern_validation.validation
- WHERE validation.trimester_id = 'E22' AND equipe_unit.trimester_id = validation.trimester_id AND
-       validation.department_id = '1809' AND equipe_unit.department_id = validation.department_id AND
-       validation.unit_id = 's6eapp1' AND equipe_unit.unit_id = validation.unit_id AND
-       NOT EXISTS(SELECT * FROM extern_validation.horaireEquipe);
+--  INSERT INTO extern_validation.horaireEquipe(trimester_id,department_id,unit_id,cipvalideur,grouping,no,hpassageprevue)
+--  SELECT DISTINCT validation.trimester_id,validation.department_id,validation.unit_id,cipvalideur,grouping,no,CAST('4:30:00' as interval)
+--  FROM extern_validation.equipe_unit, extern_validation.validation
+--  WHERE validation.trimester_id = 'E22' AND equipe_unit.trimester_id = validation.trimester_id AND
+--        validation.department_id = '1809' AND equipe_unit.department_id = validation.department_id AND
+--        validation.unit_id = 's6eapp1' AND equipe_unit.unit_id = validation.unit_id AND
+--        NOT EXISTS(SELECT * FROM extern_validation.horaireEquipe);
 
 -- SELECT validation.trimester_id,
 --        validation.department_id,
@@ -331,7 +331,41 @@ CREATE TRIGGER update_validation
 --   AND validation.unit_id = 's6eapp1'
 --   AND validation.cipvalideur = 'boua2511';
 
-SELECT * From extern_validation.horaireEquipe
+
+
+INSERT INTO extern_validation.horaireequipe(trimester_id,
+                                            department_id,
+                                            unit_id,
+                                            cipvalideur,
+                                            grouping,
+                                            no,
+                                            hpassageprevue)
+SELECT validation.trimester_id,
+       validation.department_id,
+       validation.unit_id,
+       validation.cipvalideur,
+       grouping,
+       no,
+       ((SELECT DISTINCT heure_debut
+        FROM extern_validation.unit_infoMadeUp
+        WHERE trimester_id = 'E22'
+        AND department_id = '1808'
+        AND unit_id = 's6eapp1'
+        AND cip_prof = 'boua2511')::interval + make_interval(mins =>((no-1)*EXTRACT(minutes from (SELECT Distinct dureeplagehoraire
+        FROM extern_validation.validation WHERE validation.trimester_id = 'E22'
+                                            AND validation.department_id = '1808'
+                                            AND validation.unit_id = 's6eapp1'
+                                            AND validation.cipvalideur = 'boua2511'))::INTEGER))) as hpassageprevue
+FROM extern_validation.validation INNER JOIN extern_validation.equipe_unit
+ON
+    validation.trimester_id = equipe_unit.trimester_id AND
+    validation.department_id = equipe_unit.department_id AND
+    validation.unit_id = equipe_unit.unit_id AND
+    validation.cipvalideur = equipe_unit.cip_prof
+WHERE validation.trimester_id = 'E22'
+  AND validation.department_id = '1808'
+  AND validation.unit_id = 's6eapp1'
+  AND validation.cipvalideur = 'boua2511';
 
 
 
