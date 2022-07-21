@@ -60,17 +60,17 @@
                validation.unit_id,
                validation.cipvalideur,
                grouping,
-                no,
-                ((SELECT DISTINCT heure_debut
-                FROM extern_validation.unit_infoMadeUp
-                WHERE trimester_id = #{trimester_id}
-                AND department_id = #{department_id}
-                AND unit_id = #{unit_id}
-                AND cip_prof = #{cipvalideur})::interval + make_interval(mins =>((no-1)*EXTRACT(minutes from (SELECT Distinct dureeplagehoraire
-                FROM extern_validation.validation))::INTEGER) WHERE trimester_id = #{trimester_id}
-                                                                AND department_id = #{department_id}
-                                                                AND unit_id = #{unit_id}
-                                                                AND cip_prof = #{cipvalideur})) as hpassageprevue
+            no,
+            ((SELECT DISTINCT heure_debut
+            FROM extern_validation.unit_infoMadeUp
+            WHERE trimester_id = #{trimester_id}
+            AND department_id = #{department_id}
+            AND unit_id = #{unit_id}
+            AND cip_prof = #{cipvalideur})::interval + make_interval(mins =>((no-1)*EXTRACT(minutes from (SELECT Distinct dureeplagehoraire
+            FROM extern_validation.validation WHERE validation.trimester_id = #{trimester_id}
+            AND validation.department_id = #{department_id}
+            AND validation.unit_id = #{unit_id}
+            AND validation.cipvalideur = #{cipvalideur}))::INTEGER))) as hpassageprevue
         FROM extern_validation.validation INNER JOIN extern_validation.equipe_unit
         ON
             validation.trimester_id = equipe_unit.trimester_id AND
@@ -78,9 +78,9 @@
             validation.unit_id = equipe_unit.unit_id AND
             validation.cipvalideur = equipe_unit.cip_prof
         WHERE validation.trimester_id = #{trimester_id}
-            AND validation.department_id = #{department_id}
-            AND validation.unit_id = #{unit_id}
-            AND validation.cipvalideur = #{cipvalideur};
+          AND validation.department_id = #{department_id}
+          AND validation.unit_id = #{unit_id}
+          AND validation.cipvalideur = #{cipvalideur};
     </insert>
 
     <select id="findValidEtudiant" resultMap="mapDBmodelInfoEtudiant">

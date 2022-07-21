@@ -110,7 +110,7 @@ function TeacherPage(){
 				setLoading(false);
 			});
 		})
-	}, []);
+	}, [reducerValue]);
 
 	function createValid(time) {
 		//verification validite de la duree
@@ -118,7 +118,7 @@ function TeacherPage(){
 		{
 			return;
 		}
-
+		setLoading(true);
 		let _data = {
 			trimester_id:window.trimester_id,
 			department_id:window.department_id,
@@ -156,6 +156,7 @@ function TeacherPage(){
 			return response.json();
 		})
 		forceUpdate();
+		setLoading(false);
 	}
 
 	function verifTime(time){
@@ -177,6 +178,7 @@ function TeacherPage(){
 	}
 
 	function updateValid(time) {
+		setLoading(true);
 		//verification validite de la duree
 		if (verifTime(time) === false)
 		{
@@ -203,10 +205,12 @@ function TeacherPage(){
 		})
 		setValidationCreated(true);
 		forceUpdate();
+		setLoading(false);
 	}
 
 	function prochaineEquipe() {
 		if (window.currentEquipe <= window.numberOfEquipe){
+			setLoading(true);
 			fetch(
 				"http://localhost:8089/api/finirHoraireEquipe/" +
 				loadedValidation.at(window.currentEquipe-1).numero + "/" +
@@ -252,10 +256,12 @@ function TeacherPage(){
 			})
 		}
 		forceUpdate();
+		setLoading(false);
 	}
 
 	function equipePrecedente() {
 		if (window.currentEquipe > 1){
+			setLoading(true);
 			fetch(
 				"http://localhost:8089/api/finirHoraireEquipe/" +
 				loadedValidation.at(window.currentEquipe-2).numero + "/" +
@@ -297,6 +303,7 @@ function TeacherPage(){
 			})
 		}
 		forceUpdate();
+		setLoading(false);
 	}
 
 	const toReturnIfValidation = (

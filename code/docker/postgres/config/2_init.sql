@@ -340,6 +340,3 @@ CREATE TRIGGER update_validation
 --   AND validation.department_id = '1808'
 --   AND validation.unit_id = 's6eapp1'
 --   AND validation.cipvalideur = 'boua2511';
-
-
-
