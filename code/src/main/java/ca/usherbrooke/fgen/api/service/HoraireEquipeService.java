@@ -30,31 +30,36 @@ public class HoraireEquipeService {
         List<HoraireEquipe> listeHE = new ArrayList<HoraireEquipe>();
         List<DBmodelHoraireEquipe> listeHEM = this.horaireEquipeMapper.allHorairesEquipe(unit_id,department_id,trimester_id,cipvalideur);
 
+        int lastNo = -1;
+
         //map HoraireEquipe from DBmodelHoraireEquipe
         for (DBmodelHoraireEquipe obj : listeHEM) {
-            Unit unit = new Unit();
-            unit.unit_id = obj.unit_id;
-            unit.department_id = obj.department_id;
-            unit.trimester_id = obj.trimester_id;
+            if (obj.no != lastNo){
+                Unit unit = new Unit();
+                unit.unit_id = obj.unit_id;
+                unit.department_id = obj.department_id;
+                unit.trimester_id = obj.trimester_id;
 
-            Validation valid = new Validation();
-            valid.unit = unit;
-            valid.cipvalideur = obj.cipvalideur;
-            valid.dureeplagehoraire = obj.dureeplagehoraire;
-            valid.local = obj.local;
-            valid.retard = obj.retard;
+                Validation valid = new Validation();
+                valid.unit = unit;
+                valid.cipvalideur = obj.cipvalideur;
+                valid.dureeplagehoraire = obj.dureeplagehoraire;
+                valid.local = obj.local;
+                valid.retard = obj.retard;
 
-            Equipe eq = new Equipe();
-            eq.grouping = obj.grouping;
-            eq.no = obj.no;
-            eq.membres = obj.array_agg;
+                Equipe eq = new Equipe();
+                eq.grouping = obj.grouping;
+                eq.no = obj.no;
+                eq.membres = obj.membres;
 
-            HoraireEquipe HE = new HoraireEquipe();
-            HE.hpassageprevue = obj.hpassageprevue;
-            HE.estterminee = obj.estterminee;
-            HE.validation = valid;
-            HE.equipe = eq;
-            listeHE.add(HE);
+                HoraireEquipe HE = new HoraireEquipe();
+                HE.hpassageprevue = obj.hpassageprevue;
+                HE.estterminee = obj.estterminee;
+                HE.validation = valid;
+                HE.equipe = eq;
+                listeHE.add(HE);
+                lastNo = obj.no;
+            }
         }
         return listeHE;
     }
@@ -102,6 +107,7 @@ public class HoraireEquipeService {
             @PathParam("trimester_id") String trimester_id,
             @PathParam("cipvalideur") String cipvalideur
     ) {
+        LOG.info("remplirValidation");
         horaireEquipeMapper.remplirValidation(unit_id,department_id,trimester_id,cipvalideur);
     }
 }

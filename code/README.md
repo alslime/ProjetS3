@@ -9,7 +9,7 @@ Projet des Barres tendres
 5) Execute le main (Quarkus)
 
 ### Rappel :
-1) Cip Domingo = pald2501
+1) Cip prof = boua2511
 2) Cip etudiant = beae3902
 
 

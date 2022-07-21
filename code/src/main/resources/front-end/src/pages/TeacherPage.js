@@ -55,22 +55,21 @@ function TeacherPage(){
 					for (const key in data) {
 						const MyArray = data[key].hpassageprevue.split(":");
 						const  d = new Date();
-						d.toLocaleString('en-US', { timeZone: 'America/New_York' });
-						d.setHours(MyArray[0]);
-						d.setMinutes(MyArray[1]);
-						d.setSeconds(MyArray[2]);
+						d.setHours(parseInt(MyArray[0]));
+						d.setMinutes(parseInt(MyArray[1]));
+						d.setSeconds(parseInt(MyArray[2]));
 						const srt = d.getHours()+':'+d.getMinutes();
 						const MyArrayRetard = data[0].validation.retard.split(":");
 						const  d2 = new Date();
 						d2.toLocaleString('en-US', { timeZone: 'America/New_York' });
-						d2.setHours(MyArrayRetard[0]);
-						d2.setMinutes(MyArrayRetard[1]);
-						d2.setSeconds(MyArrayRetard[2]);
+						d2.setHours(parseInt(MyArrayRetard[0]));
+						d2.setMinutes(parseInt(MyArrayRetard[1]));
+						d2.setSeconds(parseInt(MyArrayRetard[2]));
 						const d1 = new Date();
-
 						d1.setTime(d.getTime()+d2.getTime());
 						d1.toLocaleString("en-US", {timeZone: "America/New_York"});
 						const srt1 = d1.getHours()-3+':'+d1.getMinutes();
+
 						window.numberOfEquipe += 1;
 						const HoraireEquipes = {
 							numero: data[key].equipe.no,
