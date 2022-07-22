@@ -41,7 +41,6 @@ public class ValidationService {
     @RolesAllowed("teacher")
     public void updateRetard(DBmodelValidation validation) {
         LOG.info("updateRetard");
-        LOG.info(validation.retard);
         ValidationMapper.updateRetard(validation);
     }
 }

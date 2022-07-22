@@ -35,9 +35,12 @@ public class HoraireEquipeService {
         List<HoraireEquipe> listeHE = new ArrayList<HoraireEquipe>();
         List<DBmodelHoraireEquipe> listeHEM = this.horaireEquipeMapper.allHorairesEquipe(unit_id,department_id,trimester_id,cipvalideur);
 
+        // Mybatis splits the array of cip and scramble them so it thinks
+        // that there are more teams than there are really -> So we check
+        // the no of the team to see if it is a duplicate
         int lastNo = -1;
 
-        //map HoraireEquipe from DBmodelHoraireEquipe
+        // Map HoraireEquipe from DBmodelHoraireEquipe
         for (DBmodelHoraireEquipe obj : listeHEM) {
             if (obj.no != lastNo){
                 Unit unit = new Unit();
