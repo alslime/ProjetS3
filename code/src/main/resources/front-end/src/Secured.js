@@ -68,7 +68,7 @@ class Secured extends Component {
 						console.log(`The function recieved with value ${res}`);
 						this.setState({fetchState: true});
 					}).catch();
-					return (<div>Chargement du profil...</div>);
+					return (<div>Chargement du profil.</div>);
 				}
 				if (this.state.fetchState)
 					return (
