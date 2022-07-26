@@ -270,7 +270,8 @@ AS $BODY$ BEGIN
     FROM schema_groupe.unit
     WHERE new.trimester_id = schema_groupe.unit.trimester_id
       AND new.department_id = schema_groupe.unit.department_id
-      AND new.unit_id = schema_groupe.unit.unit_id;
+      AND new.unit_id = schema_groupe.unit.unit_id
+      AND new.cipvalideur = schema_groupe.unit.cip_prof;
     RETURN NULL;
 END $BODY$;
 
@@ -292,6 +293,48 @@ AS $BODY$ BEGIN
       AND new.trimester_id = schema_groupe.unit.trimester_id
       AND new.department_id = schema_groupe.unit.department_id
       AND new.unit_id = schema_groupe.unit.unit_id;
+
+    DELETE FROM schema_groupe.horaireEquipe WHERE cipvalideur = new.cipValideur
+                                              AND serial_unit_id = (SELECT DISTINCT serial_unit_id
+                                                                    FROM schema_groupe.unit
+                                                                    WHERE trimester_id = new.trimester_id
+                                                                    AND department_id = new.department_id
+                                                                    AND unit_id = new.unit_id
+                                                                    AND cip_prof = new.cipvalideur);
+
+    INSERT INTO extern_validation.horaireequipe(trimester_id,
+                                                department_id,
+                                                unit_id,
+                                                cipvalideur,
+                                                grouping,
+                                                no,
+                                                hpassageprevue)
+    SELECT validation.trimester_id,
+           validation.department_id,
+           validation.unit_id,
+           validation.cipvalideur,
+           grouping,
+           no,
+           ((SELECT DISTINCT heure_debut
+             FROM extern_validation.unit_infoMadeUp
+             WHERE trimester_id = new.trimester_id
+            AND department_id = new.department_id
+        AND unit_id = new.unit_id
+        AND cip_prof = new.cipValideur)::interval + make_interval(mins =>((no-1)*EXTRACT(minutes from (SELECT Distinct dureeplagehoraire
+        FROM extern_validation.validation WHERE validation.trimester_id = new.trimester_id
+        AND validation.department_id = new.department_id
+        AND validation.unit_id = new.unit_id
+        AND validation.cipvalideur = new.cipValideur))::INTEGER))) as hpassageprevue
+        FROM extern_validation.validation INNER JOIN extern_validation.equipe_unit
+        ON
+        validation.trimester_id = equipe_unit.trimester_id AND
+                                  validation.department_id = equipe_unit.department_id AND
+                                  validation.unit_id = equipe_unit.unit_id AND
+                                  validation.cipvalideur = equipe_unit.cip_prof
+                                  WHERE validation.trimester_id = new.trimester_id
+                                    AND validation.department_id = new.department_id
+                                    AND validation.unit_id = new.unit_id
+                                    AND validation.cipvalideur = new.cipValideur;
     RETURN NULL;
 END $BODY$;
 

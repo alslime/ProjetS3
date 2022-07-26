@@ -8,15 +8,13 @@ Projet des Barres tendres
 4) Start le web avec ```npm start```
 5) Execute le main (Quarkus)
 
-### Il reste :
-2) Update heure_passageprevue quand update temps valid
-
 ### A faire si vous avez du temps :
 1) protéger requete sql
 
 ### Bugs :
-1) Refresh pendant requete ??
-2) authorization bloque par prof apres update validation
+1) Des fois prochaine equipe marche pas
+2) Refresh pendant requete ??
+3) authorization bloque par prof apres update validation de temps en temps
 
 ### Rappel :
 1) Cips prof = valid1 : ```boua2511``` valid2 : ```maif1401```
