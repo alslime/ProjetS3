@@ -117,7 +117,22 @@ SELECT DISTINCT department_id,
 FROM schema_groupe.unit
 WHERE department_id = '1808' AND
       trimester_id = 'E22' AND
-      cip_prof = 'boua2511';
+      cip_prof = 'boua2511'
+UNION
+SELECT DISTINCT department_id,
+                      trimester_id,
+                      's3iapp2' as unit_id,
+                      cip_prof,
+                      '2021/01/01'::date as debut,
+              '2023/01/01'::date as fin,
+              '2022/07/20'::date as dateValid,
+              '13:00:00'::time as heure_debut,
+              '3:30:00'::interval as temps,
+              'C1-3025' as local
+      FROM schema_groupe.unit
+      WHERE department_id = '1808' AND
+          trimester_id = 'E22' AND
+          cip_prof = 'maif1401';
 
 CREATE OR REPLACE VIEW extern_validation.equipe_etudiants AS
 SELECT DISTINCT department_id, trimester_id, unit_id, cipetudiant, no, grouping
@@ -164,7 +179,7 @@ From ((schema_groupe.validation
     INNER JOIN schema_groupe.unit ON validation.serial_unit_id = unit.serial_unit_id);
 
 CREATE OR REPLACE VIEW extern_validation.equipe_unit AS
-SELECT schema_groupe.equipe.no,
+SELECT DISTINCT schema_groupe.equipe.no,
        schema_groupe.unit.department_id,
        schema_groupe.unit.trimester_id,
        schema_groupe.unit.unit_id,
@@ -247,11 +262,11 @@ AS $BODY$ BEGIN
                                             local,
                                             dureePlageHoraire,
                                             retard)
-    SELECT schema_groupe.unit.serial_unit_id,
+    SELECT DISTINCT schema_groupe.unit.serial_unit_id,
            new.cipValideur,
            new.local,
            new.dureePlageHoraire,
-           '0:0'
+           '0:0'::interval
     FROM schema_groupe.unit
     WHERE new.trimester_id = schema_groupe.unit.trimester_id
       AND new.department_id = schema_groupe.unit.department_id

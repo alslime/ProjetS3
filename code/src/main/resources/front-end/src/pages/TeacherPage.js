@@ -9,6 +9,7 @@ function TeacherPage(){
 	const [loadedValidation, setLoadedValidation] = useState([]);
 	const [loadedInfoValidation, setLoadedInfoValidation] = useState(null);
 	const [reducerValue, forceUpdate] = useReducer(x => x + 1, 1);
+	window.test = true;
 
 	// Aller chercher les horaires pour les afficher
 	useEffect(() => {
@@ -51,8 +52,8 @@ function TeacherPage(){
 			// Aller chercher les horaires pour les afficher avec les infos precedentes
 			await fetch(
 				"http://localhost:8089/api/getAllHorairesEquipe/" +
-				's6eapp1' + "/" +
-				'1808' + "/" +
+				window.unit_id + "/" +
+				window.department_id + "/" +
 				window.trimester_id + "/" +
 				window.username,
 				{
@@ -99,6 +100,7 @@ function TeacherPage(){
 						}
 						validation.push(HoraireEquipes);
 					}
+					window.dureeEquipe = data[0].validation.dureeplagehoraire;
 					const validInfo = {
 						local: data[0].validation.local,
 						duree: data[0].validation.dureeplagehoraire,
@@ -211,56 +213,91 @@ function TeacherPage(){
 		})
 	}
 
+	// *** For tests -> this returns always true ***
+	function checkDate(){
+		let now = new Date();
+		const dateValidArr = window.datevalid.split('-');
+		const dateValid = new Date(dateValidArr[0], dateValidArr[1], dateValidArr[2])
+		if (window.test || dateValid.toDateString() === now.toDateString()){
+			return true;
+		}
+		alert("Aujourd'hui ne correspond pas à la date de la validation.");
+		return false;
+	}
+
 	async function prochaineEquipe() {
+		if (!checkDate()){
+			return;
+		}
 		if (window.currentEquipe <= window.numberOfEquipe) {
 			setLoading(true);
 			// Passe a la prochaine equipe
 			await fetch(
-				"http://localhost:8089/api/finirHoraireEquipe/" +
-				loadedValidation.at(window.currentEquipe - 1).numero + "/" +
-				window.unit_id + "/" +
-				window.department_id + "/" +
-				window.trimester_id + "/" +
-				window.username + "/" +
-				loadedValidation.at(window.currentEquipe - 1).grpng +
-				"/true", {
+			"http://localhost:8089/api/finirHoraireEquipe/" +
+			loadedValidation.at(window.currentEquipe - 1).numero + "/" +
+			window.unit_id + "/" +
+			window.department_id + "/" +
+			window.trimester_id + "/" +
+			window.username + "/" +
+			loadedValidation.at(window.currentEquipe - 1).grpng +
+			"/true", {
+				method: "PUT",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+					Authorization: "Bearer " + window.accessToken
+				}
+			}).then()
+
+			// Calcul retard
+			let heureEquipe = loadedValidation.at(window.currentEquipe-1).horaire.split(':');
+			let heureEquipeMin = ( 60*parseInt(heureEquipe[0]) ) + parseInt(heureEquipe[1]);
+			let now = new Date();
+			let nowMin = now.getHours()*60 + now.getMinutes();
+			let diff = nowMin - heureEquipeMin;
+			let retrd = "0 years 0 mons 0 days 0 hours 0 mins 0.0 secs";
+			if (diff > 0){
+				retrd = "0 years 0 mons 0 days 0 hours " +
+					diff + " mins 0.0 secs";
+			}
+
+			// Incrementer currentEquipe
+			if (window.currentEquipe < window.numberOfEquipe) {
+				window.currentEquipe += 1;
+			}
+
+			// Update le retard de la validation
+			let _data = {
+				trimester_id: window.trimester_id,
+				department_id: window.department_id,
+				unit_id: window.unit_id,
+				cipvalideur: window.username,
+				retard: retrd
+			}
+			await fetch(
+				'http://localhost:8089/api/updateRetard', {
 					method: "PUT",
+					body: JSON.stringify(_data),
 					headers: {
 						Accept: "application/json",
-						"Content-Type": "application/json",
+						"Content-type": "application/json; charset=UTF-8",
 						Authorization: "Bearer " + window.accessToken
 					}
-				}).then(async () => {
-				if (window.currentEquipe < window.numberOfEquipe) {
-					window.currentEquipe += 1;
-				}
-				// Update le retard de la validation
-				let _data = {
-					trimester_id: window.trimester_id,
-					department_id: window.department_id,
-					unit_id: window.unit_id,
-					cipvalideur: window.username,
-					retard: "0 years 0 mons 0 days 0 hours 15 mins 0.0 secs"
-				}
-				await fetch(
-					'http://localhost:8089/api/updateRetard', {
-						method: "PUT",
-						body: JSON.stringify(_data),
-						headers: {
-							Accept: "application/json",
-							"Content-type": "application/json; charset=UTF-8",
-							Authorization: "Bearer " + window.accessToken
-						}
-					}).then(() => {
-					forceUpdate();
-				})
+				}).then(() => {
+				forceUpdate();
 			})
 		} else {
 			alert("Toutes les équipes ont été passées.");
 		}
 	}
 
+
+
 	async function equipePrecedente() {
+		if (!checkDate()){
+			return;
+		}
+
 		if (window.currentEquipe > 1) {
 			setLoading(true);
 			// Reviens a l'equipe precedente
@@ -279,28 +316,42 @@ function TeacherPage(){
 						"Content-Type": "application/json",
 						Authorization: "Bearer " + window.accessToken
 					}
-				}).then(async () => {
-				window.currentEquipe -= 1;
-				// Update le retard de la validation
-				let _data = {
-					trimester_id: window.trimester_id,
-					department_id: window.department_id,
-					unit_id: window.unit_id,
-					cipvalideur: window.username,
-					retard: "0 years 0 mons 0 days 0 hours 2 mins 0.0 secs"
-				}
-				await fetch(
-					'http://localhost:8089/api/updateRetard', {
-						method: "PUT",
-						body: JSON.stringify(_data),
-						headers: {
-							Accept: "application/json",
-							"Content-Type": "application/json; charset=UTF-8",
-							Authorization: "Bearer " + window.accessToken
-						}
-					}).then(() => {
-					forceUpdate();
-				})
+				}).then()
+
+			// Calcul retard
+			const heureEquipe = loadedValidation.at(window.currentEquipe-2).horaire.split(':');
+			const heureEquipeMin = ( 60*parseInt(heureEquipe[0]) ) + parseInt(heureEquipe[1]);
+			const now = new Date();
+			const nowMin = now.getHours()*60 + now.getMinutes();
+			const diff = nowMin - heureEquipeMin;
+			let retrd = "0 years 0 mons 0 days 0 hours 0 mins 0.0 secs";
+			if (diff > 0){
+				retrd = "0 years 0 mons 0 days 0 hours " +
+					diff + " mins 0.0 secs";
+			}
+
+			// Decrementer currentEquipe
+			window.currentEquipe -= 1;
+
+			// Update le retard de la validation
+			let _data = {
+				trimester_id: window.trimester_id,
+				department_id: window.department_id,
+				unit_id: window.unit_id,
+				cipvalideur: window.username,
+				retard: retrd
+			}
+			await fetch(
+				'http://localhost:8089/api/updateRetard', {
+					method: "PUT",
+					body: JSON.stringify(_data),
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json; charset=UTF-8",
+						Authorization: "Bearer " + window.accessToken
+					}
+				}).then(() => {
+				forceUpdate();
 			})
 		} else {
 			alert("Aucune équipe n'a encore été passée.")

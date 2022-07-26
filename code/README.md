@@ -9,18 +9,18 @@ Projet des Barres tendres
 5) Execute le main (Quarkus)
 
 ### Il reste :
-1) Faire plusieurs validation a tester
-2) Retard pas hardcoder
-3) Update heure_passageprevue quand update temps valid
-5) va dans teacher ou student selon role
+2) Update heure_passageprevue quand update temps valid
+
+### A faire si vous avez du temps :
+1) protéger requete sql
 
 ### Bugs :
-1) Refresh pendant requete??
+1) Refresh pendant requete ??
 2) authorization bloque par prof apres update validation
 
 ### Rappel :
-1) Cip prof = boua2511
-2) Cip etudiant = beae3902
+1) Cips prof = valid1 : ```boua2511``` valid2 : ```maif1401```
+2) Cips etudiant = valid1 : ```beae3902``` valid2 : ```ton cip```
 
 
 
