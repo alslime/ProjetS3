@@ -7,11 +7,9 @@ class Secured extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { keycloak: null,
-			authenticated:false,
-			isLoading:true,
-			name: "",
-			email: "",
-			id: ""};
+			fetchState:false,
+			authenticated:false
+			};
 	}
 
 	componentDidMount() {
@@ -21,38 +19,64 @@ class Secured extends Component {
 			if (authenticated) {
 				// Construire trimester_id String
 				var year = new Date();
-				year = year.getFullYear().toString().substring(2,4);
+				year = year.getFullYear().toString().substring(2, 4);
 				window.trimester_id = '';
 				var month = new Date();
-				month = month.getMonth()+1;
-				if (month+1 < 5){
+				month = month.getMonth() + 1;
+				if (month + 1 < 5) {
 					window.trimester_id = 'H'
-				}else if (month+1 < 9){
+				} else if (month + 1 < 9) {
 					window.trimester_id = 'E'
-				}else{
+				} else {
 					window.trimester_id = 'A'
 				}
 				window.trimester_id = window.trimester_id.concat(year.toString());
 
 				// Charger profile
 				window.accessToken = keycloak.token;
+				window.teacherRole = keycloak.hasRealmRole("teacher");
 				keycloak.loadUserProfile()
-					.then(function(profile) {
+					.then(function (profile) {
 						window.username = profile.username;
-					}).catch(function() {
+					}).catch(function () {
 					alert('Erreur de chargement du profile.');
 				});
 			}
-		})
+		});
 	}
 
 	render() {
 		if (this.state.keycloak) {
-			if (this.state.authenticated) return (
-				<BrowserRouter>
-					<App />
-				</BrowserRouter>
-			); else return (<div>Impossible de s'authentifier.</div>)
+			if (this.state.authenticated) {
+				let mypromise = function functionOne() {
+					console.log("Entered function");
+					return new Promise((resolve, reject) => {
+						setTimeout(
+							() => {
+								console.log("Inside the promise");
+								if (window.teacherRole !== undefined && window.username !== undefined) {
+									resolve("Resolved");
+								} else {
+									reject("Rejected");
+								}
+							}, 25
+						);
+					});
+				};
+				if (!this.state.fetchState) {
+					mypromise().then((res) => {
+						console.log(`The function recieved with value ${res}`);
+						this.setState({fetchState: true});
+					}).catch();
+					return (<div>Chargement du profil...</div>);
+				}
+				if (this.state.fetchState)
+					return (
+						<BrowserRouter>
+							<App/>
+						</BrowserRouter>);
+			}
+			 else return (<div>Impossible de s'authentifier.</div>)
 		}
 		return (
 			<div>Chargement.</div>
