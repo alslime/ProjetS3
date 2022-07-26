@@ -317,13 +317,3 @@ END $BODY$;
 CREATE TRIGGER update_validation
     INSTEAD OF UPDATE ON extern_validation.validation
     FOR EACH ROW EXECUTE PROCEDURE extern_validation.update_validation();
-
-
-UPDATE extern_validation.horaireEquipe
-SET estterminee = true
-WHERE trimester_id = 'E22'
-  AND department_id = '1808'
-  AND unit_id = 's3iapp2'
-  AND cipvalideur = 'maif1401'
-  AND no = 1
-  AND grouping = 1;
