@@ -5,12 +5,20 @@ import {Component} from "react";
 
 class App extends Component {
 	render() {
-		return (<div>
-			<Routes>
-				<Route path={'/'} element={<StudentPage />} />
-				<Route path={'/teacher'} element={<TeacherPage />} />
-			</Routes>
-		</div>);
+		if(window.teacherRole){
+			return (<div>
+				<Routes>
+					<Route path={'/'} element={<TeacherPage />} />
+				</Routes>
+			</div>);
+		}
+		else{
+			return (<div>
+				<Routes>
+					<Route path={'/'} element={<StudentPage />} />
+				</Routes>
+			</div>);
+		}
 	}
 }
 
