@@ -9,7 +9,7 @@ Projet des Barres tendres
 5) Execute le main (Quarkus)
 
 ### A faire si vous avez du temps :
-1) protéger requete sql
+1) proteger requete sql
 
 ### Bugs :
 1) Des fois prochaine equipe marche pas
